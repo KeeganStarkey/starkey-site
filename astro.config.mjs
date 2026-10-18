@@ -5,5 +5,5 @@ export default defineConfig({
   site: 'https://www.keeganstarkey.com',
   trailingSlash: 'always',
   build: { format: 'directory', inlineStylesheets: 'auto' },
-  integrations: [sitemap({ filter: (page) => !page.includes('/thanks/') && !page.includes('/mux-check/') })],
+  integrations: [sitemap({ filter: (page) => !page.includes('/thanks/') })],
 });
