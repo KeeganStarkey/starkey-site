@@ -14,8 +14,9 @@ html{scroll-padding-top:calc(var(--bar) + 68px)}
 .s-loc i{width:7px; height:7px; border-radius:50%; background:var(--rec)}
 .fh-stage{position:relative; isolation:isolate; display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:clamp(16px,2vw,28px); background:var(--bg)}
 .fh-cam{grid-column:5 / 13}
-.fh-photo{aspect-ratio:4/5; overflow:hidden; background:#151615}
-.fh-photo img{width:100%; height:100%; object-fit:cover; display:block}
+.fh-photo{aspect-ratio:16/9; overflow:hidden; background:#151615}
+.fh-photo img{width:100%; height:100%; object-fit:cover; object-position:50% 28%; display:block}
+@media (max-width:760px){ .fh-photo{aspect-ratio:4/5} .fh-photo img{object-position:50% 50%} }
 .fh-cam .hud-b{justify-content:flex-end}
 .fh-cam .hud-b span:first-child{display:none}
 .fh-h1{position:absolute; z-index:4; left:var(--gut); bottom:10%; font-family:var(--display); font-stretch:62%; font-weight:850; text-transform:uppercase; font-size:clamp(56px,9.4vw,172px); line-height:.8; color:#EFEDE7; mix-blend-mode:difference; pointer-events:none}
