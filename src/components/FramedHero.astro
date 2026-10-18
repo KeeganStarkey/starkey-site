@@ -4,9 +4,11 @@ import Cam from './Cam.astro';
 interface Props {
   crumbs: { name: string; href?: string }[];
   loc?: string;
-  k: string;
-  label: string;
+  k?: string;
+  label?: string;
   info?: string;
+  photo?: string;
+  photoAlt?: string;
   title: string; // HTML allowed (<br>)
   small?: boolean;
   lede: string;
@@ -14,7 +16,7 @@ interface Props {
   cta2?: { label: string; href: string };
   aria: string;
 }
-const { crumbs, loc = 'Milton Keynes · UK-wide', k, label, info, title, small = false, lede, cta, cta2, aria } = Astro.props;
+const { crumbs, loc = 'Milton Keynes · UK-wide', k, label, info, photo, photoAlt, title, small = false, lede, cta, cta2, aria } = Astro.props;
 ---
 <section class="fh" data-hero aria-label={aria}>
   <div class="fh-top gut">
@@ -27,7 +29,9 @@ const { crumbs, loc = 'Milton Keynes · UK-wide', k, label, info, title, small =
     <span class="s-loc"><i aria-hidden="true"></i>{loc}</span>
   </div>
   <div class="fh-stage gut">
-    <Cam k={k} label={label} tcOff={0} info={info} caption={false} class="fh-cam" />
+    {photo
+      ? <figure class="fh-cam fh-photo"><img src={photo} alt={photoAlt || ''} /></figure>
+      : <Cam k={k} label={label} tcOff={0} info={info} caption={false} class="fh-cam" />}
     <h1 class:list={['fh-h1', { sm: small }]} set:html={title} />
   </div>
   <div class="fh-low gut">
