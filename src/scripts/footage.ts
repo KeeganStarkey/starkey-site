@@ -28,15 +28,23 @@ export function attach(v: HTMLVideoElement, mux: string | undefined, src: string
   return new Promise<{ destroy(): void } | undefined>((resolve) => {
     if (mux) {
       const url = `https://stream.mux.com/${mux}.m3u8`;
-      if (v.canPlayType('application/vnd.apple.mpegurl')) { v.src = url; resolve(undefined); return; }
+      // Prefer hls.js (MediaSource) whenever it's supported — this is hls.js's own
+      // recommended order. Checking canPlayType() first is unreliable: some Chromium
+      // builds report (false) support for application/vnd.apple.mpegurl, which sets
+      // a raw .m3u8 as the video src and fails with "no supported sources".
       getHls().then((Hls) => {
-        if (!Hls.isSupported()) { v.src = url; resolve(undefined); return; }
-        const h = new Hls(opts.full
-          ? { capLevelToPlayerSize: true }
-          : { capLevelToPlayerSize: true, maxBufferLength: 10, maxMaxBufferLength: 20 });
-        h.loadSource(url);
-        h.attachMedia(v);
-        resolve(h);
+        if (Hls.isSupported()) {
+          const h = new Hls(opts.full
+            ? { capLevelToPlayerSize: true }
+            : { capLevelToPlayerSize: true, maxBufferLength: 10, maxMaxBufferLength: 20 });
+          h.loadSource(url);
+          h.attachMedia(v);
+          resolve(h);
+        } else if (v.canPlayType('application/vnd.apple.mpegurl')) {
+          v.src = url; resolve(undefined);
+        } else {
+          resolve(undefined);
+        }
       });
     } else if (src) {
       v.src = src;
