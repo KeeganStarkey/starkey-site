@@ -13,15 +13,15 @@ const work = [
   { k: 'longest-round', cls: 'w1', label: 'A-cam · Documentary', tc: 41210 },
   { k: 'eagle-creek-social', cls: 'w2', label: 'B-cam · Social', tc: 9020 },
   { k: 'business-main', cls: 'w3', label: 'A-cam · Business', tc: 22675 },
-  { k: 'mgm-grand', cls: 'w4', label: 'C-cam · Events', tc: 60380 },
+  { k: 'sidemen-charity', cls: 'w4', label: 'C-cam · Events', tc: 60380 },
   { k: 'festival-a', cls: 'w5', label: 'B-cam · Events', tc: 31640 },
-  { k: 'sidemen-charity', cls: 'w6', label: 'A-cam · Events', tc: 72905 },
+  { k: 'mgm-grand', cls: 'w6', label: 'A-cam · Events', tc: 72905 },
 ];
 const cats = [...new Set(work.map((w) => videos[w.k].cat))];
 const catLabel: Record<string, string> = { business: 'Business', events: 'Events', social: 'Social', documentary: 'Documentary', travel: 'Travel' };
 const services = [
   { name: 'Business', note: 'Promos · brand films · recruitment', href: '/services/business-video/', k: 'business-main' },
-  { name: 'Events', note: 'Conferences · launches · awards', href: '/services/event-videography/', k: 'sidemen-charity' },
+  { name: 'Events', note: 'Conferences · launches · awards', href: '/services/event-videography/', k: 'mgm-grand' },
   { name: 'Social', note: 'Monthly content retainers', href: '/retainers/', k: 'eagle-creek-social' },
   { name: 'Documentary', note: 'Brand stories · mini-docs', href: '/services/brand-documentary/', k: 'longest-round' },
 ];

@@ -29,13 +29,13 @@ const faqs = [
     service({ name: 'Event videography', serviceType: 'Event video production', path: '/services/event-videography/', description: 'Conference, launch, awards and corporate event filming with highlights films, social clips, session recordings and interviews.' }),
     breadcrumb([{ name: 'Services', path: '/services/' }, { name: 'Event videography', path: '/services/event-videography/' }]),
     faq(faqs),
-    ...videoObjects(['sidemen-charity', 'festival-a', 'mgm-grand']),
+    ...videoObjects(['mgm-grand', 'festival-a', 'sidemen-charity']),
   ]}
 >
   <FramedHero
     aria="Event videography"
     crumbs={[{ name: 'Services', href: '/services/' }, { name: 'Event videography' }]}
-    k="sidemen-charity" label="A-cam · Charity match"
+    k="mgm-grand" label="A-cam · The Grand"
     title="Event<br>videography"
     lede="Conferences, launches, awards nights and live events, filmed and edited by a Milton Keynes crew that travels anywhere in the UK."
     cta={{ label: 'Check your date', href: '#enquire' }}
@@ -65,9 +65,9 @@ const faqs = [
   <section class="sec gut" id="work" aria-labelledby="work-h">
     <div class="work-head"><h2 class="h2" id="work-h">Event work</h2><a class="tlink" href="/work/">All work →</a></div>
     <div class="ev-grid">
-      <Cam k="sidemen-charity" label="A-cam · Charity match" tcOff={41210} class="e1" />
+      <Cam k="mgm-grand" label="A-cam · The Grand" tcOff={41210} class="e1" />
       <Cam k="festival-a" label="B-cam · Social" tcOff={9020} class="e2" />
-      <Cam k="mgm-grand" label="C-cam · The Grand" tcOff={22675} class="e3" />
+      <Cam k="sidemen-charity" label="C-cam · Charity match" tcOff={22675} class="e3" />
     </div>
   </section>
 
