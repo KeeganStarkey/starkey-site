@@ -83,6 +83,16 @@ function swap(v: HTMLVideoElement, from: HTMLElement) {
 
 document.querySelectorAll<HTMLVideoElement>('video.footage').forEach((v) => {
   F.set(v, { v, visible: false, gate: null, cam: false, live: false, loaded: false });
+  // Match the frame to the clip's real shape, in case it was filed under the wrong ratio.
+  const frame = v.closest<HTMLElement>('.cam-v');
+  if (frame) v.addEventListener('loadedmetadata', () => {
+    if (!v.videoWidth || !v.videoHeight) return;
+    const tall = v.videoHeight > v.videoWidth;
+    if (tall === frame.classList.contains('r916')) return;
+    frame.classList.toggle('r916', tall);
+    frame.classList.toggle('r169', !tall);
+    frame.closest('.strip > .cam')?.classList.toggle('strip-wide', !tall);
+  });
 });
 
 const io = new IntersectionObserver((es) => {
