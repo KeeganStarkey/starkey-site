@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import FramedHero from '../components/FramedHero.astro';
+import Subnav from '../components/Subnav.astro';
+import Cam from '../components/Cam.astro';
+import Faq from '../components/Faq.astro';
+import Enquiry from '../components/Enquiry.astro';
+import Related from '../components/Related.astro';
+import { breadcrumb, faq, service } from '../lib/schema';
+import '../styles/inner.css';
+
+const faqs = [
+  { q: 'How much does a video retainer cost?', a: "It depends on how many shoot days you need each month, how much editing goes into them, and whether you want us to handle posting. Retainer days cost less than booking the same days one at a time. Tell us about your business and we'll put together a plan and a price that fits." },
+  { q: 'How long do we sign up for?', a: "Most retainers start on a six-month term, which gives the content time to build momentum and is where you'll see the best results. Three-month terms are available too if you'd like to start smaller. After that it's rolling monthly with 30 days' notice." },
+  { q: 'How many videos do we get each month?', a: "Each shoot day is planned to produce 8 to 9 finished videos plus a set of stills. Two shoot days a month doubles that. We'll agree the exact mix of reels, short films and website content with you before the month starts." },
+  { q: 'Do you post the content for us?', a: 'We can. Publishing is its own service: captions, scheduling and posting on a dedicated publishing day each month. Comments and messages stay with your team, so enquiries come straight to you.' },
+  { q: "What if we don't use all our days?", a: "Unused shoot and edit days roll over for one month, so a quiet month doesn't cost you anything." },
+  { q: 'Do we own the videos?', a: 'Yes. Everything comes with a full licence for your website, your social channels and paid advertising, with music licensed for every platform.' },
+  { q: 'Do you work with businesses outside Milton Keynes?', a: 'Yes. Monthly shoots are simplest within about an hour of Milton Keynes, but we have retainer clients further afield. Travel is agreed up front.' },
+];
+const strip = [
+  { k: 'reel-a', t: 'Reel 01', s: 'Week 1 · Instagram' },
+  { k: 'eagle-creek-social', t: 'Reel 02', s: 'Week 1 · TikTok' },
+  { k: 'bts', t: 'Behind the scenes', s: 'Week 2 · Stories' },
+  { k: 'coastal-resort', t: 'Website loop', s: 'Week 2 · Homepage', wide: true },
+  { k: 'reel-b', t: 'Reel 03', s: 'Week 3 · LinkedIn' },
+  { k: 'morocco-vertical', t: 'Reel 04', s: 'Week 3 · Instagram' },
+  { k: 'festival-dj', t: 'Monthly recap', s: 'Week 4 · All channels' },
+];
+---
+<Base
+  title="Monthly Video Content for Business | Starkey Productions"
+  description="One shoot day a month, edited into reels, short films and website content. Monthly social media video for businesses in and around Milton Keynes."
+  current="retainers"
+  cta="Talk about a retainer"
+  mbar="Talk about a retainer"
+  schema={[
+    service({ name: 'Monthly video content retainers', serviceType: 'Social media video production', path: '/retainers/', description: 'A monthly content partnership: one or two shoot days a month, edited into reels, short films, website content and stills.' }),
+    breadcrumb([{ name: 'Retainers', path: '/retainers/' }]),
+    faq(faqs),
+  ]}
+>
+  <FramedHero
+    aria="Monthly video content"
+    crumbs={[{ name: 'Retainers' }]}
+    loc="Milton Keynes · within the hour"
+    k="highlights-reel" label="A-cam · Shoot day"
+    title="Monthly<br>video<br>content" small
+    lede="One shoot day a month, turned into a steady stream of videos for your socials and your website. For businesses that want to stay visible without having to think about it."
+    cta={{ label: 'Talk about a retainer', href: '#enquire' }}
+    cta2={{ label: 'See a month', href: '#month' }}
+  />
+
+  <Subnav title="Retainers" links={[['#what', 'What it is'], ['#why', 'Why monthly'], ['#month', 'A month'], ['#included', "What's included"], ['#who', "Who it's for"], ['#faq', 'FAQ'], ['#enquire', 'Enquire']]} />
+
+  <section class="sec gut" id="what" aria-labelledby="what-h">
+    <div class="intro">
+      <h2 class="h2" id="what-h">Not a one-off. A <span class="egg egg-focus"><span class="fw-i">rhythm.</span></span></h2>
+      <p>A retainer is a monthly content partnership. Instead of booking a video every time you need one, Starkey Productions films with you once or twice a month and turns each shoot into a month of finished social media content: reels, short films, website loops and stills, planned around what your business has coming up. Same crew, same standard, every month, for businesses in and around Milton Keynes.</p>
+    </div>
+  </section>
+
+  <section class="sec gut" id="why" aria-labelledby="why-h">
+    <div class="del-head"><h2 class="h2" id="why-h">Why monthly works harder</h2><p>One-off videos are great for one moment. A retainer is how you stay in front of people every week.</p></div>
+    <ul class="del">
+      <li><span class="del-num">01</span><h3 class="del-name">You stay <span class="egg egg-zebra">visible</span></h3><p class="del-text">The businesses that win online are the ones that show up every week. A retainer means there's always something good to post, not just when someone finds the time.</p></li>
+      <li><span class="del-num">02</span><h3 class="del-name">One day, a month of posts</h3><p class="del-text">Every shoot day is planned to produce 8 to 9 finished videos plus stills. One day of your time, four weeks of content.</p></li>
+      <li><span class="del-num">03</span><h3 class="del-name">Better value than one-offs</h3><p class="del-text">Retainer days cost less than booking the same days one at a time, and unused days roll over for a month. More for the same budget, and nothing wasted.</p></li>
+      <li><span class="del-num">04</span><h3 class="del-name">A crew that knows you</h3><p class="del-text">No re-briefing and no new faces. We learn your business, your people and your look, so every month gets sharper than the last.</p></li>
+      <li><span class="del-num">05</span><h3 class="del-name">Made for every platform</h3><p class="del-text">Vertical for Instagram, TikTok and LinkedIn, landscape for YouTube and your website. Each one edited for where it's going, not cropped as an afterthought.</p></li>
+    </ul>
+  </section>
+
+  <section class="sec gut" id="month" aria-labelledby="month-h">
+    <div class="work-head"><h2 class="h2" id="month-h">What a month looks like</h2><a class="tlink" href="#enquire">Talk about a retainer →</a></div>
+    <ol class="proc">
+      <li><span class="p-when">Before the month</span><span class="p-node" aria-hidden="true"></span><h3>Plan</h3><p>We agree what's coming up, what you want people to know, and what to film.</p></li>
+      <li><span class="p-when">Shoot day</span><span class="p-node rec" aria-hidden="true"></span><h3>Film</h3><p>A day on location: interviews, your team at work, the product, the place. Everything the month needs.</p></li>
+      <li><span class="p-when">Weeks 1 to 4</span><span class="p-node" aria-hidden="true"></span><h3>Release</h3><p>Finished videos delivered through the month, edited for each platform and ready to post.</p></li>
+      <li><span class="p-when">Month end</span><span class="p-node" aria-hidden="true"></span><h3>Review</h3><p>A quick look at what landed, what didn't, and what to film next time.</p></li>
+    </ol>
+    <div class="strip">
+      {strip.map((m) => <Cam k={m.k} label={m.t} title={m.t} sub={m.s} play={false} info="" open="" ratio={m.wide ? '16:9' : '9:16'} class={m.wide ? 'strip-wide' : undefined} />)}
+    </div>
+    <div class="strip-note"><p>Then we do it again next month. <span>Same crew, new ideas, and a back catalogue that keeps growing.</span></p></div>
+  </section>
+
+  <section class="sec gut" id="included" aria-labelledby="inc-h">
+    <div class="del-head"><h2 class="h2" id="inc-h">What's included</h2><p>Every retainer is built around your business, but these come as standard.</p></div>
+    <ul class="del">
+      <li><span class="del-tags"><span>Monthly</span></span><h3 class="del-name">Content planning</h3><p class="del-text">What to film and why, planned around your launches, events and busy seasons.</p></li>
+      <li><span class="del-tags"><span>1 or 2 a month</span></span><h3 class="del-name">Shoot days</h3><p class="del-text">On location with cinema cameras, proper audio and lighting, and as little disruption as possible.</p></li>
+      <li><span class="del-tags"><span>9:16</span><span>16:9</span><span>1:1</span></span><h3 class="del-name">Editing for every platform</h3><p class="del-text">Reels, short films, website loops and stills, with two rounds of changes on every edit.</p></li>
+      <li><span class="del-tags"><span>Licensed</span></span><h3 class="del-name">Music &amp; usage</h3><p class="del-text">Music cleared for every platform, and a full licence to use everything on your website, socials and paid ads.</p></li>
+      <li><span class="del-tags"><span>Monthly</span></span><h3 class="del-name">Review</h3><p class="del-text">A short catch-up on what's working, so the next month is better than this one.</p></li>
+      <li class="addon"><span class="del-tags"><span class="addon-tag">Add-on</span></span><h3 class="del-name">Publishing</h3><p class="del-text">Captions, scheduling and posting, handled on a dedicated publishing day. Its own service, so you can take it or keep posting yourself.</p></li>
+    </ul>
+  </section>
+
+  <section class="gut" aria-label="Add a hero film">
+    <div class="band">
+      <div><p class="eyebrow">Bigger moments</p><p class="band-t">Add a hero film. <span>Retainer clients can add a full brand film, made alongside the monthly shoots, for much less than it costs on its own.</span></p></div>
+      <div class="band-r"><p>Good for a launch, a new website or a rebrand.</p><a class="tlink" href="#enquire">Ask about a hero film →</a></div>
+    </div>
+  </section>
+
+  <section class="sec gut" id="who" aria-labelledby="who-h">
+    <h2 class="eyebrow" id="who-h">Built for businesses like</h2>
+    <ul class="types">
+      <li>Gyms &amp; studios</li><li>Restaurants &amp; bars</li><li>Hotels &amp; venues</li><li>Leisure clubs</li><li>Membership clubs</li><li>Construction &amp; trades</li><li>Professional services</li><li>Retail &amp; brands</li><li>Event businesses</li>
+    </ul>
+    <p class="types-note">If you've got people, a place or a product worth showing, and you'd rather be running your business than filming it, a retainer will probably suit you.</p>
+  </section>
+
+  <Faq items={faqs} />
+  <Enquiry heading="Talk about<br>a retainer" preset="monthly" page="Retainers" />
+  <Related exclude="social" letterbox />
+</Base>

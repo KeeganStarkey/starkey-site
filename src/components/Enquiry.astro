@@ -1,0 +1,65 @@
+---
+// The enquiry form, submitted to Netlify Forms. One form name everywhere ("enquiry");
+// the events page adds a date and venue. Netlify picks the form up from the built HTML.
+import Direct from './Direct.astro';
+import { whatsappLink, mailLink } from '../data/site';
+
+interface Props {
+  heading: string;
+  preset?: string;
+  home?: boolean;
+  event?: boolean;
+  page: string;
+  submitLabel?: string;
+}
+const { heading, preset, home = false, event = false, page, submitLabel = event ? 'Check availability' : 'Send enquiry' } = Astro.props;
+const needs = [
+  ['event', 'Event film'], ['brand', 'Brand film or promo'], ['monthly', 'Monthly content'], ['documentary', 'Documentary'], ['unsure', 'Not sure yet'],
+];
+const kinds = [['conference', 'Conference'], ['launch', 'Launch'], ['awards', 'Awards night'], ['party', 'Party or gala'], ['other', 'Something else']];
+const formName = event ? 'event-enquiry' : 'enquiry';
+const uid = event ? 'ev' : 'en';
+---
+<section class:list={home ? ['enq', 'gut'] : ['sec', 'gut']} id="enquire" aria-labelledby={`${uid}-h`}>
+  <div class:list={home ? ['enq-main'] : ['enq']}>
+    <div>
+      <p class="eyebrow">Enquiries</p>
+      <h2 class:list={home ? ['enq-h'] : ['h2', 'enq-h']} id={`${uid}-h`} set:html={heading} />
+      <form class="form" name={formName} method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field" data-wa={whatsappLink()} data-mail={mailLink()}>
+        <input type="hidden" name="form-name" value={formName} />
+        <input type="hidden" name="page" value={page} />
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        {event ? (
+          <>
+            <div class="fields">
+              <label class="fld"><span class="eyebrow">Event date</span><input name="date" type="date" /></label>
+              <label class="fld"><span class="eyebrow">Venue or town</span><input name="venue" type="text" placeholder="e.g. Milton Keynes" /></label>
+            </div>
+            <fieldset class="need">
+              <legend class="eyebrow">What kind of event?</legend>
+              <div class="chips">
+                {kinds.map(([v, l], i) => <label class="chip"><input type="radio" name="kind" value={v} checked={i === 0} /><span>{l}</span></label>)}
+              </div>
+            </fieldset>
+          </>
+        ) : (
+          <fieldset class="need">
+            <legend class="eyebrow">What do you need?</legend>
+            <div class="chips">
+              {needs.map(([v, l]) => <label class="chip"><input type="radio" name="need" value={v} checked={preset === v} /><span>{l}</span></label>)}
+            </div>
+          </fieldset>
+        )}
+        <div class="fields">
+          <label class="fld"><span class="eyebrow">Your name</span><input name="name" type="text" autocomplete="name" placeholder="First and last name" required /></label>
+          <label class="fld"><span class="eyebrow">Email or phone</span><input name="contact" type="text" autocomplete="email" placeholder="However suits you" required /></label>
+        </div>
+        <label class="fld"><span class="eyebrow">Anything else <small>(optional)</small></span><textarea name="message" rows="2" placeholder={event ? 'Rough timings, number of rooms, what the film is for' : 'Your business, dates, location, what it\'s for'}></textarea></label>
+        <div class="send"><button type="submit" class="btn" data-label={submitLabel}>{submitLabel}</button><p class="reply">We reply within one working day.</p></div>
+        <p class="form-msg" role="status" tabindex="-1" hidden></p>
+      </form>
+    </div>
+    {!home && <Direct />}
+  </div>
+  {home && <Direct />}
+</section>

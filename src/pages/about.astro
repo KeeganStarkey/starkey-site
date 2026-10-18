@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import FramedHero from '../components/FramedHero.astro';
+import Enquiry from '../components/Enquiry.astro';
+import { site } from '../data/site';
+import { breadcrumb } from '../lib/schema';
+import '../styles/inner.css';
+
+const person = {
+  '@type': 'Person',
+  name: site.owner,
+  jobTitle: 'Filmmaker and founder',
+  worksFor: { '@id': site.url + '/#business' },
+  url: site.url + '/about/',
+};
+---
+<Base
+  title="About Keegan Starkey | Starkey Productions"
+  description="Starkey Productions is run by Keegan Starkey, a Milton Keynes filmmaker who plans, shoots and edits every project himself."
+  current="about"
+  schema={[person, breadcrumb([{ name: 'About', path: '/about/' }])]}
+>
+  <FramedHero
+    aria="About Starkey Productions"
+    crumbs={[{ name: 'About' }]}
+    k="bts" label="B-cam · Behind the scenes" info=""
+    title="The person<br>behind the<br>camera" small
+    lede="Starkey Productions is run by Keegan Starkey, a filmmaker based in Milton Keynes. The person you speak to on the first call is the one behind the camera and in the edit."
+    cta={{ label: 'Start a project', href: '#enquire' }}
+    cta2={{ label: 'See the work', href: '/work/' }}
+  />
+
+  <section class="sec gut" aria-labelledby="ab-h">
+    <div class="intro">
+      <h2 class="h2" id="ab-h">One filmmaker. End to end.</h2>
+      <div>
+        <p>Keegan plans, shoots and edits every Starkey Productions project himself. That means one point of contact, one consistent look across everything you post, and nobody passing your brief down a line of people who've never met you.</p>
+        <p>The work covers product and brand films, event coverage, monthly content for local businesses and documentary work, including a documentary teaser for DAZN. The common thread is the same: find what's worth filming, shoot it properly, and cut it so people watch to the end.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec gut" aria-labelledby="how-h">
+    <div class="del-head"><h2 class="h2" id="how-h">How the work gets made</h2></div>
+    <ul class="kit">
+      <li><h3>Cinema cameras, small footprint</h3><p>Shot on Sony FX3 and FX30 cinema cameras with a compact kit, so you get a premium image without a crew taking over the building.</p></li>
+      <li><h3>Made for the web</h3><p>Every film is edited for where it will be watched: landscape for your website and YouTube, vertical for Instagram, TikTok and LinkedIn.</p></li>
+      <li><h3>Local by design</h3><p>Based in Milton Keynes, working with businesses across Buckinghamshire, Bedfordshire and Northamptonshire, and travelling UK-wide for events and bigger projects.</p></li>
+    </ul>
+  </section>
+
+  <section class="gut" aria-label="Sister brands">
+    <div class="band">
+      <div><p class="eyebrow">Golf and weddings?</p><p class="band-t">They have homes of their own. <span>Golf films live under Bad At Golf, and weddings under Wedding Diaries. Starkey Productions is for businesses, events and the stories behind them.</span></p></div>
+      <div class="band-r"><p>Links to both are at the bottom of every page.</p></div>
+    </div>
+  </section>
+
+  <Enquiry heading={'Got <span class="egg egg-zebra">something</span><br>worth filming?'} preset="unsure" page="About" />
+</Base>

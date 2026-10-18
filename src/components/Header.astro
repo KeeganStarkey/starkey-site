@@ -1,0 +1,30 @@
+---
+import { nav, socials, site, whatsappLink } from '../data/site';
+interface Props { current?: string; cta?: string; ctaHref?: string }
+const { current, cta = 'Enquire', ctaHref = '#enquire' } = Astro.props;
+---
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr gut" id="hdr">
+  <a class="hdr-mark" href="/" aria-label="Starkey Productions, home"><span>Starkey</span> <span class="p">Productions</span></a>
+  <nav aria-label="Main">
+    <ul>
+      {nav.map((n) => (
+        <li class="nav-links"><a href={n.href} class:list={[{ cur: current === n.key }]} aria-current={current === n.key ? 'page' : undefined}>{n.label}</a></li>
+      ))}
+      <li><a class="hdr-enq" href={ctaHref}><i aria-hidden="true"></i><span class="l-l">{cta}</span><span class="l-s">Enquire</span></a></li>
+      <li><button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mnav" aria-label="Menu"><i></i></button></li>
+    </ul>
+  </nav>
+</header>
+<div class="mnav" id="mnav" inert>
+  <ul>
+    <li><a class="big" href="/" aria-current={current === 'home' ? 'page' : undefined}>Home</a></li>
+    {nav.map((n) => <li><a class="big" href={n.href} aria-current={current === n.key ? 'page' : undefined}>{n.label}</a></li>)}
+  </ul>
+  <div class="mnav-foot">
+    <a href={whatsappLink()} target="_blank" rel="noopener">WhatsApp · {site.phoneDisplay}</a>
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+    <span>{socials.filter((s) => s.url).map((s, i) => <>{i > 0 && ' · '}<a href={s.url} target="_blank" rel="noopener">{s.name}</a></>)}</span>
+  </div>
+</div>
+<script is:inline>document.documentElement.classList.add('js');</script>

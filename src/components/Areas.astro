@@ -1,0 +1,41 @@
+---
+import { towns } from '../data/site';
+interface Props { heading?: string; text?: string }
+const {
+  heading = 'Based in Milton Keynes. Filming across the UK.',
+  text = 'Most of our regular clients are within an hour of Milton Keynes, which keeps monthly shoots simple. For events and one-off projects, we travel anywhere in the UK.',
+} = Astro.props;
+---
+<section class="sec gut" id="areas" aria-labelledby="areas-h">
+  <div class="areas">
+    <div class="areas-t">
+      <h2 class="h2" id="areas-h">{heading}</h2>
+      <p>{text}</p>
+      <p class="towns">{towns.join(' · ')}</p>
+      <div class="rd-key" aria-hidden="true"><span><i></i>20 miles</span><span><i class="solid"></i>40 and 60 miles</span></div>
+    </div>
+    <div class="radar">
+      <svg viewBox="0 0 800 800" role="img" aria-labelledby="rd-t rd-d">
+        <title id="rd-t">Distance from Milton Keynes</title>
+        <desc id="rd-d">Rings at 20, 40 and 60 miles around Milton Keynes, with nearby towns plotted roughly to scale.</desc>
+        <defs><linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EFEDE7" stop-opacity="0"/><stop offset="1" stop-color="#EFEDE7" stop-opacity=".09"/></linearGradient></defs>
+        <line class="rd-axis" x1="400" y1="30" x2="400" y2="770"/><line class="rd-axis" x1="30" y1="400" x2="770" y2="400"/>
+        <circle class="rd-ring inner" cx="400" cy="400" r="120"/><circle class="rd-ring" cx="400" cy="400" r="240"/><circle class="rd-ring" cx="400" cy="400" r="360"/>
+        <g class="rd-sweep"><path d="M400 400 L400 40 A360 360 0 0 1 523.1 61.7 Z" fill="url(#sw)"/></g>
+        <text class="rd-rl" x="514" y="392" text-anchor="end">20 MI</text><text class="rd-rl" x="634" y="392" text-anchor="end">40 MI</text><text class="rd-rl" x="754" y="392" text-anchor="end">60 MI</text>
+        <g class="rd-town"><circle cx="474.8" cy="360.2" r="5"/><text x="488" y="366">BEDFORD</text></g>
+        <g class="rd-town"><circle cx="364.2" cy="317.1" r="5"/><text x="351" y="323" text-anchor="end">NORTHAMPTON</text></g>
+        <g class="rd-town"><circle cx="486.8" cy="466.3" r="5"/><text x="500" y="472">LUTON</text></g>
+        <g class="rd-town"><circle cx="387.2" cy="492.8" r="5"/><text x="387" y="522" text-anchor="middle">AYLESBURY</text></g>
+        <g class="rd-town"><circle cx="342" cy="417" r="5"/><text x="329" y="423" text-anchor="end">BUCKINGHAM</text></g>
+        <g class="rd-town rd-far"><circle cx="272.9" cy="519.3" r="5"/><text x="260" y="525" text-anchor="end">OXFORD</text></g>
+        <g class="rd-town rd-far"><circle cx="624.4" cy="331.7" r="5"/><text x="637" y="337">CAMBRIDGE</text></g>
+        <g class="rd-town rd-far"><circle cx="303.2" cy="153.1" r="5"/><text x="316" y="159">LEICESTER</text></g>
+        <g class="rd-town rd-far"><circle cx="344.3" cy="642.8" r="5"/><text x="331" y="648" text-anchor="end">READING</text></g>
+        <g class="rd-town rd-far"><circle cx="561.3" cy="620.8" r="5"/><text x="574" y="626">LONDON</text></g>
+        <g class="rd-town rd-far"><circle cx="111.5" cy="215.2" r="5"/><text x="124" y="221">BIRMINGHAM</text></g>
+        <g class="rd-home"><circle class="p" cx="400" cy="400" r="9"/><circle class="c" cx="400" cy="400" r="9"/><text x="414" y="432">MILTON KEYNES</text></g>
+      </svg>
+    </div>
+  </div>
+</section>

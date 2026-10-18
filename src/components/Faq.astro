@@ -1,0 +1,15 @@
+---
+interface Props { items: { q: string; a: string }[]; focusEgg?: boolean }
+const { items, focusEgg = false } = Astro.props;
+---
+<section class="sec gut" id="faq" aria-labelledby="faq-h">
+  <div class="faq">
+    <div class="faq-h">
+      <h2 class="h2" id="faq-h">{focusEgg ? <span class="egg egg-focus"><span class="fw-i">Questions</span></span> : 'Questions'}</h2>
+      <p>Anything not here, just ask. You'll get a straight answer.</p>
+    </div>
+    <div class="faq-list">
+      {items.map(({ q, a }) => <details><summary>{q}<i aria-hidden="true"></i></summary><p set:html={a} /></details>)}
+    </div>
+  </div>
+</section>

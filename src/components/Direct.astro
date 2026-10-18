@@ -1,0 +1,12 @@
+---
+import { site, whatsappLink, mailLink } from '../data/site';
+---
+<aside class="direct" aria-label="Message Keegan directly">
+  <span class="marks" aria-hidden="true"></span>
+  <p class="eyebrow">Rather skip the form?</p>
+  <p class="direct-h">Message Keegan directly.</p>
+  <p class="direct-p">You'll be talking to the person who plans, films and edits your project, not a sales team.</p>
+  <a class="direct-row" href={whatsappLink()} target="_blank" rel="noopener"><span class="direct-k">WhatsApp</span><span class="direct-v">{site.phoneDisplay}</span><span class="direct-go" aria-hidden="true">&rarr;</span></a>
+  <a class="direct-row" href={mailLink()}><span class="direct-k">Email</span><span class="direct-v">{site.email}</span><span class="direct-go" aria-hidden="true">&rarr;</span></a>
+  <p class="direct-f"><i aria-hidden="true"></i>Based in {site.town} &middot; replies within {site.replyTime}</p>
+</aside>

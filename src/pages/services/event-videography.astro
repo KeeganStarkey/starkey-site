@@ -1,0 +1,102 @@
+---
+import Base from '../../layouts/Base.astro';
+import FramedHero from '../../components/FramedHero.astro';
+import Subnav from '../../components/Subnav.astro';
+import Cam from '../../components/Cam.astro';
+import Areas from '../../components/Areas.astro';
+import Faq from '../../components/Faq.astro';
+import Enquiry from '../../components/Enquiry.astro';
+import Related from '../../components/Related.astro';
+import { breadcrumb, faq, service, videoObjects } from '../../lib/schema';
+import '../../styles/inner.css';
+
+const faqs = [
+  { q: 'How much does event videography cost?', a: 'It depends on how long the event runs, how many cameras and crew it needs, and what you want delivered. Tell us about your event and we\'ll send a tailored quote, so you only pay for what you\'ll actually use.' },
+  { q: 'How soon will we get the films?', a: 'We agree delivery dates before the event, so there are no surprises. If you want clips out while people are still talking about it, we plan quick-turnaround social edits into the day.' },
+  { q: 'Do you travel outside Milton Keynes?', a: "Yes. We're based in Milton Keynes and film events across the UK, from London and Birmingham to wherever your venue is." },
+  { q: 'Can you film multi-room or multi-day events?', a: "Yes. For bigger events we scale up the crew and cameras. Send over the schedule early and we'll plan who covers what." },
+  { q: 'What do you need from us on the day?', a: 'A run of show, a list of the people and moments that matter most, and a contact on site. We handle the rest and stay out of the way.' },
+  { q: 'Can you film all our events through the year?', a: 'Yes, and it usually works out simpler. A <a href="/retainers/">retainer</a> covers your events and the content around them as one monthly plan, with the same crew who already know your brand.' },
+];
+---
+<Base
+  title="Event Videographer Milton Keynes | Starkey Productions"
+  description="Event videography for conferences, launches, awards nights and corporate events. Highlights films, social clips and session recordings, from Milton Keynes and UK-wide."
+  current="services"
+  cta="Check your date"
+  mbar="Check your date"
+  schema={[
+    service({ name: 'Event videography', serviceType: 'Event video production', path: '/services/event-videography/', description: 'Conference, launch, awards and corporate event filming with highlights films, social clips, session recordings and interviews.' }),
+    breadcrumb([{ name: 'Services', path: '/services/' }, { name: 'Event videography', path: '/services/event-videography/' }]),
+    faq(faqs),
+    ...videoObjects(['morocco-aftermovie', 'festival-dj']),
+  ]}
+>
+  <FramedHero
+    aria="Event videography"
+    crumbs={[{ name: 'Services', href: '/services/' }, { name: 'Event videography' }]}
+    k="events-reel" label="A-cam · Festival stage"
+    title="Event<br>videography"
+    lede="Conferences, launches, awards nights and live events, filmed and edited by a Milton Keynes crew that travels anywhere in the UK."
+    cta={{ label: 'Check your date', href: '#enquire' }}
+    cta2={{ label: 'See event work', href: '#work' }}
+  />
+
+  <Subnav title="Event videography" links={[['#what', 'What you get'], ['#work', 'Work'], ['#how', 'How it runs'], ['#areas', 'Areas'], ['#faq', 'FAQ'], ['#enquire', 'Check your date']]} />
+
+  <section class="sec gut" aria-labelledby="intro-h">
+    <div class="intro">
+      <h2 class="h2" id="intro-h">Your event lasts a day. The film keeps working all year.</h2>
+      <p>Starkey Productions is an event videographer based in Milton Keynes, filming conferences, product launches, awards nights and corporate events across the UK. We capture the energy in the room, then cut it into a highlights film, social clips and full session recordings you can use long after the venue's been packed away.</p>
+    </div>
+  </section>
+
+  <section class="sec gut" id="what" aria-labelledby="what-h">
+    <div class="del-head"><h2 class="h2" id="what-h">What you get</h2><p>Pick what you need. Most events take the highlights film and social clips; bigger conferences add the full sessions.</p></div>
+    <ul class="del">
+      <li><span class="del-tags"><span>16:9</span><span>9:16</span></span><h3 class="del-name">Highlights film</h3><p class="del-text">The best of the day in 60 to 120 seconds, built to make people wish they'd been there.</p></li>
+      <li><span class="del-tags"><span>9:16</span><span>1:1</span></span><h3 class="del-name">Social clips</h3><p class="del-text">Short vertical edits for Instagram, TikTok and LinkedIn, ready while people are still talking about it.</p></li>
+      <li><span class="del-tags"><span>16:9</span></span><h3 class="del-name">Speaker &amp; session recordings</h3><p class="del-text">Full talks and panels filmed cleanly with proper audio, for your website, your attendees or next year's sales pitch.</p></li>
+      <li><span class="del-tags"><span>16:9</span><span>9:16</span></span><h3 class="del-name">Interviews &amp; testimonials</h3><p class="del-text">Speakers, guests and sponsors on camera, saying what made it worth being there.</p></li>
+      <li><span class="del-tags"><span>16:9</span><span>9:16</span></span><h3 class="del-name">Sponsor cuts</h3><p class="del-text">Versions for sponsors and partners to share, which helps bring them back next year.</p></li>
+    </ul>
+  </section>
+
+  <section class="sec gut" id="work" aria-labelledby="work-h">
+    <div class="work-head"><h2 class="h2" id="work-h">Event work</h2><a class="tlink" href="/work/">All work →</a></div>
+    <div class="ev-grid">
+      <Cam k="morocco-aftermovie" label="A-cam · Main stage" tcOff={41210} class="e1" />
+      <Cam k="festival-dj" label="B-cam" tcOff={9020} class="e2" />
+      <Cam k="highlights-reel" label="C-cam · Launch" tcOff={22675} class="e3" />
+    </div>
+  </section>
+
+  <section class="sec gut" id="how" aria-labelledby="how-h">
+    <h2 class="h2" id="how-h">How it runs</h2>
+    <ol class="proc">
+      <li><span class="p-when">Weeks before</span><span class="p-node" aria-hidden="true"></span><h3>Brief</h3><p>A call to understand the event, the audience and what the film needs to do afterwards.</p></li>
+      <li><span class="p-when">The week before</span><span class="p-node" aria-hidden="true"></span><h3>Plan</h3><p>Run of show, shot list, crew and kit locked in, so you know exactly who's turning up and when.</p></li>
+      <li><span class="p-when">On the day</span><span class="p-node rec" aria-hidden="true"></span><h3>Film</h3><p>We work around your schedule and keep out of the way: speakers, crowd, details and interviews.</p></li>
+      <li><span class="p-when">After</span><span class="p-node" aria-hidden="true"></span><h3>Deliver</h3><p>Social clips first, then the highlights film and sessions, with time built in for your feedback.</p></li>
+    </ol>
+  </section>
+
+  <section class="sec gut" aria-label="Events we film">
+    <h2 class="eyebrow">Events we film</h2>
+    <ul class="types">
+      <li>Conferences</li><li>Product launches</li><li>Awards nights</li><li>Exhibitions &amp; trade shows</li><li>Corporate parties</li><li>Charity galas</li><li>Festivals</li><li>Sports events</li><li>Workshops &amp; training days</li>
+    </ul>
+  </section>
+
+  <section class="gut" aria-label="Regular events">
+    <div class="band">
+      <div><p class="eyebrow">Running regular events?</p><p class="band-t">Put them on a retainer. <span>Every event gets filmed, edited and posted as part of one monthly plan, with the same crew each time.</span></p></div>
+      <div class="band-r"><p>Best for businesses in and around Milton Keynes with events, launches or open days every month or quarter.</p><a class="tlink" href="/retainers/">Social retainers →</a></div>
+    </div>
+  </section>
+
+  <Areas text="Most of our regular clients are within an hour of Milton Keynes, which keeps monthly shoots simple. For events and one-off projects, we'll travel anywhere in the UK." />
+  <Faq items={faqs} />
+  <Enquiry event heading="Check your date" page="Event videography" />
+  <Related exclude="events" letterbox />
+</Base>

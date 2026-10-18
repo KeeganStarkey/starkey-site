@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import Cam from '../components/Cam.astro';
+import Enquiry from '../components/Enquiry.astro';
+import { films } from '../data/videos';
+import { breadcrumb, videoObjects } from '../lib/schema';
+import '../styles/inner.css';
+
+const catLabel: Record<string, string> = { business: 'Business', events: 'Events', social: 'Social', documentary: 'Documentary', travel: 'Travel' };
+const cats = Object.keys(catLabel).filter((c) => films.some((f) => f.cat === c));
+const labels = ['A-cam', 'B-cam', 'C-cam'];
+---
+<Base
+  title="Our Work: Business & Event Films | Starkey Productions"
+  description="Selected work from Starkey Productions: business and product films, event coverage, social content and documentaries, filmed in Milton Keynes and across the UK."
+  current="work"
+  schema={[breadcrumb([{ name: 'Work', path: '/work/' }]), ...videoObjects(films.map((f) => f.key))]}
+>
+  <section class="ph-head gut" data-hero aria-labelledby="work-h">
+    <nav class="crumb eyebrow" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><span aria-current="page">Work</span></li></ol></nav>
+    <h1 id="work-h" style="margin-top:28px">Selected <span class="egg egg-focus"><span class="fw-i">work</span></span></h1>
+    <p class="lede">Business films, events, social content and documentaries. Press play on any frame to watch the film with sound.</p>
+  </section>
+
+  <section class="sec gut" aria-label="Films" style="padding-top:clamp(48px,6vw,80px)">
+    <div class="work-head">
+      <p class="eyebrow">{films.length} films</p>
+      <div class="filters" role="group" aria-label="Filter work" data-filter-for="wk-grid">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        {cats.map((c) => <button type="button" data-f={c} aria-pressed="false">{catLabel[c]}</button>)}
+      </div>
+    </div>
+    <div class="wk-grid" id="wk-grid">
+      {films.map((f, i) => (
+        <Cam k={f.key} label={`${labels[i % 3]} · ${catLabel[f.cat]}`} tcOff={(i + 1) * 7321} cat={f.cat} class={f.ratio === '9:16' ? 'port' : f.ratio === '2.39:1' ? 'scope' : undefined} />
+      ))}
+    </div>
+  </section>
+
+  <Enquiry heading={'Got <span class="egg egg-zebra">something</span><br>worth filming?'} preset="unsure" page="Work" />
+</Base>
+
+<script>
+  import '../scripts/filter';
+</script>

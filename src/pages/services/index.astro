@@ -1,0 +1,96 @@
+---
+import Base from '../../layouts/Base.astro';
+import FramedHero from '../../components/FramedHero.astro';
+import Subnav from '../../components/Subnav.astro';
+import Cam from '../../components/Cam.astro';
+import Areas from '../../components/Areas.astro';
+import Faq from '../../components/Faq.astro';
+import Enquiry from '../../components/Enquiry.astro';
+import { breadcrumb, faq, service, videoObjects } from '../../lib/schema';
+import '../../styles/inner.css';
+
+const faqs = [
+  { q: 'How much does video production cost?', a: "It depends on what you need: how many shoot days, how much editing, and where the videos are going. Tell us what you're after and we'll send a tailored quote, so you only pay for what you'll actually use. If you need video every month, a <a href=\"/retainers/\">retainer</a> works out cheaper than booking the same days one at a time." },
+  { q: 'How long does it take to make a video?', a: "Most one-off films are delivered within two to three weeks of the shoot, and we agree dates before we start. If something's urgent, tell us early and we'll plan a faster turnaround." },
+  { q: "What's the difference between a one-off video and a retainer?", a: "A one-off is a single project with a clear finish line, like an event film or a brand film. A retainer is a monthly plan: we film with you once or twice a month and turn each shoot into a month of content, so you're never short of something good to post." },
+  { q: 'Do you only work in Milton Keynes?', a: "No. We're based in Milton Keynes and most regular clients are within an hour of us, but we film across the UK. Travel is agreed up front, so there are no surprises on the invoice." },
+  { q: 'Can you post the videos for us as well?', a: 'Yes. Publishing is a service in its own right: captions, scheduling and posting, handled on a dedicated publishing day. Plenty of clients take it, and some prefer to post themselves. Either works.' },
+  { q: 'Who owns the videos?', a: 'You do. Every film comes with a full licence for your website, your social channels and paid advertising, and the music is licensed for every platform.' },
+];
+const list = [
+  { n: '01 · Business', h: 'Corporate &amp; promotional video', href: '/services/business-video/', sub: 'Brand films · promos · product · recruitment · testimonials', p: 'Films that explain what you do and why it matters, made for your homepage, your LinkedIn and the emails you send to new clients. Shot on cinema cameras and edited to hold attention past the first three seconds.', link: 'Business video →', k: 'cargo-hauler', label: 'A-cam · Product', tc: 22675 },
+  { n: '02 · Events', h: 'Event videography', href: '/services/event-videography/', sub: 'Conferences · launches · awards · live events', p: "Your event lasts a day; the film keeps working all year. We capture the energy in the room and turn it into a highlights film, social clips and full session recordings, working around your run of show and staying out of the way.", link: 'Event videography →', k: 'morocco-aftermovie', label: 'B-cam · Aftermovie', tc: 41210 },
+  { n: '03 · Social', h: 'Monthly social media content', href: '/retainers/', sub: 'Retainers · reels · website content', p: 'One shoot day a month, edited into a steady stream of reels, short films and website content. The simplest way to stay visible online without filming on your phone or briefing a new crew every time.', link: 'How retainers work →', k: 'eagle-creek-social', label: 'C-cam · Social', tc: 9020, port: true },
+  { n: '04 · Documentary', h: 'Brand documentaries', href: '/services/brand-documentary/', sub: 'Brand stories · mini-docs · founder films', p: 'The story behind your business, told the way a <span class="egg egg-letterbox">documentary</span> would tell it: real people, real places, nothing read off a card. A mini-doc builds the kind of trust an advert can\'t, and keeps doing it for years.', link: 'Documentary films →', k: 'longest-round', label: 'A-cam · Documentary', tc: 32000 },
+];
+---
+<Base
+  title="Video Production Services in Milton Keynes | Starkey Productions"
+  description="Corporate videos, event videography, monthly social media content and brand documentaries, filmed and edited in Milton Keynes for businesses across the UK."
+  current="services"
+  cta="Start a project"
+  schema={[
+    service({ name: 'Video production services', serviceType: 'Video production', path: '/services/', description: 'Corporate and promotional video, event videography, monthly social media content and brand documentaries from a Milton Keynes video production company.', offers: ['Corporate and promotional video', 'Event videography', 'Monthly social media video content', 'Brand documentaries'] }),
+    breadcrumb([{ name: 'Services', path: '/services/' }]),
+    faq(faqs),
+    ...videoObjects(list.map((l) => l.k)),
+  ]}
+>
+  <FramedHero
+    aria="Video production services"
+    crumbs={[{ name: 'Services' }]}
+    k="showreel" label="A-cam · Showreel" info=""
+    title="Video<br>production<br>services" small
+    lede="Business films, event coverage, monthly social content and brand documentaries. Planned, filmed and edited by Starkey Productions in Milton Keynes, for businesses across the UK."
+    cta={{ label: 'Start a project', href: '#enquire' }}
+    cta2={{ label: 'See the services', href: '#what' }}
+  />
+
+  <Subnav title="Services" links={[['#what', 'What we film'], ['#how', 'How it works'], ['#areas', 'Areas'], ['#faq', 'FAQ'], ['#enquire', 'Enquire']]} />
+
+  <section class="sec gut" aria-labelledby="intro-h">
+    <div class="intro">
+      <h2 class="h2" id="intro-h">One crew. Every film your business needs.</h2>
+      <p>Starkey Productions is a video production company based in Milton Keynes. We make corporate videos, promotional films, event videography, social media content and brand documentaries for businesses across Buckinghamshire, Bedfordshire, Northamptonshire and the rest of the UK. You deal with the same people from the first call to the final <span class="egg egg-cut" style="--cx:50%"><span>ed</span><i aria-hidden="true"></i><span>it</span></span>, so nothing gets lost along the way.</p>
+    </div>
+  </section>
+
+  <section class="sec gut" id="what" aria-labelledby="what-h">
+    <div class="del-head"><h2 class="h2" id="what-h">What we film</h2><p>Four services from one crew. Most clients start with one and end up using two or three.</p></div>
+    <div class="svl">
+      {list.map((s, i) => (
+        <article class:list={['svl-row', { flip: i % 2 === 1 }]}>
+          <div class="svl-t">
+            <span class="svl-n">{s.n}</span>
+            <h3 class="svl-h"><a href={s.href} set:html={s.h} /></h3>
+            <span class="svl-sub">{s.sub}</span>
+            <p class="svl-p" set:html={s.p} />
+            <a class="tlink" href={s.href}>{s.link}</a>
+          </div>
+          <Cam k={s.k} label={s.label} tcOff={s.tc} class={s.port ? 'port' : undefined} />
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="gut" aria-label="Not sure which you need">
+    <div class="band">
+      <div><p class="eyebrow">Not sure which one you need?</p><p class="band-t">Tell us what you're trying to achieve. <span>We'll tell you what will actually work, even if it's smaller than you expected.</span></p></div>
+      <div class="band-r"><p>Most projects start with a two-minute message on WhatsApp or email.</p><a class="tlink" href="#enquire">Start a project →</a></div>
+    </div>
+  </section>
+
+  <section class="sec gut" id="how" aria-labelledby="how-h">
+    <h2 class="h2" id="how-h">How it works</h2>
+    <ol class="proc">
+      <li><span class="p-when">First</span><span class="p-node" aria-hidden="true"></span><h3>Brief</h3><p>A short conversation about your business, your audience and what the film needs to do once it's out there.</p></li>
+      <li><span class="p-when">Before the shoot</span><span class="p-node" aria-hidden="true"></span><h3>Plan</h3><p>Ideas, shot list, locations and schedule agreed up front, so the day runs on time and nothing's left to chance.</p></li>
+      <li><span class="p-when">Shoot day</span><span class="p-node rec" aria-hidden="true"></span><h3>Film</h3><p>Cinema cameras, proper audio and lighting, with as little disruption to your team as possible.</p></li>
+      <li><span class="p-when">After</span><span class="p-node" aria-hidden="true"></span><h3>Deliver</h3><p>Finished edits in every shape you need: landscape, vertical and square, with two rounds of changes built in.</p></li>
+    </ol>
+  </section>
+
+  <Areas />
+  <Faq items={faqs} focusEgg />
+  <Enquiry heading={'Got <span class="egg egg-zebra">something</span><br>worth filming?'} preset="unsure" page="Services" />
+</Base>

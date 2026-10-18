@@ -1,0 +1,10 @@
+---
+interface Props { title: string; links: [string, string][] }
+const { title, links } = Astro.props;
+---
+<nav class="subnav" aria-label="On this page">
+  <div class="subnav-in gut">
+    <span class="sub-t">{title}</span>
+    <ul>{links.map(([href, label]) => <li><a href={href}>{label}</a></li>)}</ul>
+  </div>
+</nav>

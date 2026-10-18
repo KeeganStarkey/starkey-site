@@ -1,0 +1,34 @@
+---
+import { nav, socials, sisterBrands, site } from '../data/site';
+interface Props { enquireHref?: string }
+const { enquireHref = '#enquire' } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="foot gut">
+  <div class="foot-top">
+    <ul>
+      {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+      <li><a href={enquireHref}>Enquire</a></li>
+    </ul>
+    <ul class="soc">
+      {socials.filter((s) => s.url).map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.name}</a></li>)}
+    </ul>
+  </div>
+  <div class="foot-giant" aria-hidden="true"><span class="fw">Starkey</span><span class="fw p" id="foot-p">Productions</span></div>
+  <div class="foot-bot">
+    <p>Also from Starkey:{' '}
+      {sisterBrands.map((b, i) => (
+        <>
+          {i > 0 && ' · '}
+          {b.url
+            ? <a class="sister" href={b.url} target="_blank" rel="noopener" data-card={b.id} aria-expanded="false" aria-describedby={b.id}>{b.name}</a>
+            : <button type="button" class="sister" data-card={b.id} aria-expanded="false" aria-describedby={b.id}>{b.name}</button>}
+        </>
+      ))}
+    </p>
+    {sisterBrands.map((b) => (
+      <div class="sister-card" id={b.id} role="note"><div class="sister-swatch"></div><div class="sister-body"><span class="sister-name">{b.name}</span><span class="sister-tag">{b.tag}</span>{b.url && <span class="sister-go">Visit site →</span>}</div></div>
+    ))}
+    <p>{site.town} · UK-wide · © {year} {site.name} · <a href="/privacy/">Privacy</a></p>
+  </div>
+</footer>

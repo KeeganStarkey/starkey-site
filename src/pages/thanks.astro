@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { whatsappLink } from '../data/site';
+import '../styles/inner.css';
+---
+<Base title="Thanks | Starkey Productions" description="Your enquiry has been sent." noindex enquireHref="/#enquire" mbar="">
+  <section class="ph-head gut" aria-labelledby="ty-h" style="padding-bottom:clamp(90px,12vw,170px)">
+    <p class="eyebrow" style="display:flex; align-items:center; gap:10px"><i class="rec-dot" aria-hidden="true"></i>Received</p>
+    <h1 id="ty-h" style="margin-top:24px">That's a wrap.</h1>
+    <p class="lede">Thanks for getting in touch. Your enquiry is with Keegan now, and you'll hear back within one working day. If it's urgent, <a href={whatsappLink()} style="border-bottom:1px solid rgba(239,237,231,.4)">send a WhatsApp</a>.</p>
+    <div class="ctas" style="margin-top:36px"><a class="btn" href="/work/">Watch some work</a><a class="btn-ghost" href="/">Back to home</a></div>
+  </section>
+</Base>

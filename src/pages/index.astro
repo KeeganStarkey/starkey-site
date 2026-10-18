@@ -1,0 +1,143 @@
+---
+import Base from '../layouts/Base.astro';
+import Cam from '../components/Cam.astro';
+import Footage from '../components/Footage.astro';
+import Enquiry from '../components/Enquiry.astro';
+import { videos, playAttrs, swapAttrs } from '../data/videos';
+import { clients, testimonial } from '../data/site';
+import { videoObjects } from '../lib/schema';
+import '../styles/home.css';
+
+const reel = videos.showreel;
+const work = [
+  { k: 'longest-round', cls: 'w1', label: 'A-cam · Documentary', tc: 41210 },
+  { k: 'eagle-creek-social', cls: 'w2', label: 'B-cam', tc: 9020 },
+  { k: 'cargo-hauler', cls: 'w3', label: 'A-cam · Business', tc: 22675 },
+  { k: 'coastal-resort', cls: 'w4', label: 'C-cam · Drone', tc: 60380, info: '5.1K · 25p · 16:9' },
+  { k: 'festival-dj', cls: 'w5', label: 'B-cam', tc: 31640 },
+  { k: 'on-the-water', cls: 'w6', label: 'A-cam · Travel', tc: 72905, info: '6K · 24p · 2.39:1' },
+];
+const cats = [...new Set(work.map((w) => videos[w.k].cat))];
+const catLabel: Record<string, string> = { business: 'Business', events: 'Events', social: 'Social', documentary: 'Documentary', travel: 'Travel' };
+const services = [
+  { name: 'Business', note: 'Promos · brand films · recruitment', href: '/services/business-video/', k: 'cargo-hauler' },
+  { name: 'Events', note: 'Conferences · launches · awards', href: '/services/event-videography/', k: 'events-reel' },
+  { name: 'Social', note: 'Monthly content retainers', href: '/retainers/', k: 'highlights-reel' },
+  { name: 'Documentary', note: 'Brand stories · mini-docs', href: '/services/brand-documentary/', k: 'longest-round' },
+];
+const month = [
+  { k: 'bts', label: 'A-cam', title: 'Shoot day', sub: 'Day 1 · on location', tc: 1200 },
+  { k: 'morocco-vertical', label: 'Reel 01', title: 'Reel 01', sub: 'Week 1 · Instagram' },
+  { k: 'reel-a', label: 'Reel 02', title: 'Reel 02', sub: 'Week 1 · TikTok' },
+  { k: 'reel-b', label: 'BTS', title: 'Behind the scenes', sub: 'Week 2 · Stories' },
+  { k: 'resort-aerial', label: 'Web loop', title: 'Website loop', sub: 'Week 2 · Homepage', wide: true },
+  { k: 'morocco-vertical-2', label: 'Reel 03', title: 'Reel 03', sub: 'Week 3 · LinkedIn' },
+  { k: 'eagle-creek-social', label: 'Reel 04', title: 'Reel 04', sub: 'Week 3 · Instagram' },
+  { k: 'festival-dj', label: 'Recap', title: 'Monthly recap', sub: 'Week 4 · all channels' },
+];
+const hasProof = clients.length > 0 || !!testimonial.text;
+---
+<Base
+  title="Video Production Company in Milton Keynes | Starkey Productions"
+  description="Video production company in Milton Keynes: business films, event videos, monthly social media content and brand documentaries for businesses across the UK."
+  current="home"
+  schema={videoObjects(['showreel', ...work.map((w) => w.k)])}
+>
+  <section class="h-pin" id="h-pin" data-hero aria-label="Showreel">
+    <div class="h-stage" id="h-stage">
+      <div class="h-screen"><Footage k="showreel" /></div>
+      <div class="h-marks marks" aria-hidden="true"></div>
+      <div class="h-hud" aria-hidden="true"><span><i class="rec-dot"></i>A-cam · Showreel</span><span data-tc data-tc-off="0">01:00:12:08</span></div>
+      <p class="h-meta gut" aria-hidden="true"><span><i class="rec-dot"></i>Rec</span><span data-tc data-tc-off="0">01:00:12:08</span><span class="hide-sm">4K · 25p · 2.39:1</span></p>
+      <div class="h-low gut">
+        <h1 class="h-title"><span class="h-l1">Made to</span> <span class="h-l2">be watched.</span></h1>
+        <div class="h-foot" id="h-foot">
+          <p class="h-intro">Video production for businesses, events and brands. Promos, event films, monthly social content and documentaries.</p>
+          <button type="button" class="play" {...playAttrs('showreel')}><span class="play-ic" aria-hidden="true"></span>Play showreel {reel.duration && <span class="dur">{reel.duration}</span>}</button>
+        </div>
+      </div>
+      <div class="h-after" id="h-after">
+        <div><p class="h-after-t">{reel.title}</p><p class="h-after-s">{reel.sub}</p></div>
+        <button type="button" class="play" tabindex="-1" {...playAttrs('showreel')}><span class="play-ic" aria-hidden="true"></span>Play with sound {reel.duration && <span class="dur">{reel.duration}</span>}</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="pos gut" aria-label="About Starkey Productions">
+    <p class="eyebrow">Starkey Productions</p>
+    <p class="pos-txt" id="pos-txt">Starkey Productions is a video production company in Milton Keynes for businesses, events and brands. We plan, shoot and edit everything ourselves, from a single event film to a steady stream of monthly content, so your business looks as good online as it does in person.</p>
+    <p class="pos-more"><a class="tlink" href="/about/">About Starkey Productions →</a></p>
+  </section>
+
+  <section class="work gut" id="work" aria-labelledby="work-h">
+    <div class="sec-head">
+      <h2 class="sec-h" id="work-h">Selected<br />work</h2>
+      <div class="filters" role="group" aria-label="Filter work" data-filter-for="work-grid">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        {cats.map((c) => <button type="button" data-f={c} aria-pressed="false">{catLabel[c]}</button>)}
+      </div>
+    </div>
+    <div class="work-grid" id="work-grid">
+      {work.map((w) => (
+        <Cam k={w.k} label={w.label} tcOff={w.tc} info={w.info} class={w.cls} cat={videos[w.k].cat} />
+      ))}
+    </div>
+    <div class="work-more"><a class="tlink" href="/work/">All work →</a></div>
+  </section>
+
+  <section class="svc" id="services" aria-labelledby="svc-h">
+    <Footage k="cargo-hauler" />
+    <div class="svc-in gut">
+      <div class="svc-head"><h2 class="eyebrow" id="svc-h">What we film</h2><p class="eyebrow hide-sm">Four services, one crew</p></div>
+      <ul class="rows" id="rows">
+        {services.map((s) => (
+          <li><a class="row" href={s.href} {...swapAttrs(s.k)}><span class="row-name">{s.name}</span><span class="row-note">{s.note} <b aria-hidden="true">→</b></span></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="ret" id="retainers" aria-labelledby="ret-h">
+    <div class="r-pin" id="r-pin">
+      <div class="r-stage">
+        <div class="r-head gut">
+          <div><p class="eyebrow">Social retainers</p><h2 class="r-h" id="ret-h">Not a one-off.<br />A rhythm.</h2></div>
+          <p class="r-copy">One shoot day a month, edited into a steady stream of content for your socials and website. You stay visible without having to think about it.</p>
+        </div>
+        <div class="r-view" id="r-view">
+          <div class="r-track" id="r-track">
+            {month.map((m) => (
+              <Cam k={m.k} label={m.label} tcOff={m.tc} title={m.title} sub={m.sub} play={false} info="" open="" ratio={m.wide ? '16:9' : '9:16'} vclass={m.wide ? 'r169' : ''} />
+            ))}
+            <div class="r-end"><p>Then we do it again next month.</p><a class="btn" href="/retainers/">How retainers work</a></div>
+          </div>
+        </div>
+        <div class="r-time gut" aria-hidden="true">
+          <div class="r-line"><i id="r-prog"></i></div>
+          <div class="r-weeks"><span>Shoot day</span><span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span><span>Next shoot</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {hasProof && (
+    <section class="proof" aria-label="Clients">
+      {clients.length > 0 && (
+        <div class="logos gut"><p class="eyebrow">Trusted by</p><ul>{clients.map((c) => <li>{c.logo ? <img src={c.logo} alt={c.name} loading="lazy" /> : c.name}</li>)}</ul></div>
+      )}
+      {testimonial.text && (
+        <div class="quote">
+          <Footage k="beach" />
+          <blockquote class="gut"><p><span class="ph">“</span>{testimonial.text}<span class="ph">”</span></p><footer>{testimonial.name}{testimonial.role && ` · ${testimonial.role}`}</footer></blockquote>
+        </div>
+      )}
+    </section>
+  )}
+
+  <Enquiry home heading={'Got <span class="egg egg-zebra">something</span><br>worth filming?'} page="Home" />
+</Base>
+
+<script>
+  import '../scripts/home';
+  import '../scripts/filter';
+</script>

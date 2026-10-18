@@ -1,0 +1,102 @@
+---
+import Base from '../../layouts/Base.astro';
+import FramedHero from '../../components/FramedHero.astro';
+import Subnav from '../../components/Subnav.astro';
+import Cam from '../../components/Cam.astro';
+import Areas from '../../components/Areas.astro';
+import Faq from '../../components/Faq.astro';
+import Enquiry from '../../components/Enquiry.astro';
+import Related from '../../components/Related.astro';
+import { breadcrumb, faq, service, videoObjects } from '../../lib/schema';
+import '../../styles/inner.css';
+
+const faqs = [
+  { q: 'How much does a corporate video cost?', a: 'It depends on how many shoot days it needs, how much editing goes into it, and how many versions you want. Tell us what the film is for and we\'ll send a tailored quote. If you need video regularly, a <a href="/retainers/">retainer</a> works out cheaper than booking projects one at a time.' },
+  { q: 'How long does it take to make a corporate video?', a: "Most business films are delivered within two to three weeks of the shoot, and we agree dates before we start. If you're working to a launch date, tell us early and we'll plan backwards from it." },
+  { q: 'Do you write the script?', a: "Yes, if you'd like us to. Most of our business films are built around real interviews rather than a script, because people come across better talking than reading. Where a script works better, we'll write it with you." },
+  { q: 'Will it work on social media as well as our website?', a: 'Yes. Every film is delivered in landscape for your website and YouTube, plus vertical and square cuts for social, so one shoot covers every channel.' },
+  { q: 'Can you film at our premises?', a: "Yes, and that's usually best. We bring compact cinema kit and lighting, set up quickly and work around your team so the business keeps running while we film." },
+  { q: 'Who owns the video?', a: 'You do. Every film comes with a full licence for your website, social channels and paid advertising, and the music is licensed for every platform.' },
+];
+---
+<Base
+  title="Corporate Video Production Milton Keynes | Starkey Productions"
+  description="Corporate video production in Milton Keynes: brand films, promotional videos, product films, recruitment videos and testimonials, shot on cinema cameras."
+  current="services"
+  cta="Start a project"
+  schema={[
+    service({ name: 'Corporate and promotional video', serviceType: 'Corporate video production', path: '/services/business-video/', description: 'Brand films, promotional videos, product films, recruitment videos and client testimonials for businesses.', offers: ['Brand films', 'Promotional videos', 'Product films', 'Recruitment videos', 'Client testimonials', 'Drone footage'] }),
+    breadcrumb([{ name: 'Services', path: '/services/' }, { name: 'Corporate & promotional video', path: '/services/business-video/' }]),
+    faq(faqs),
+    ...videoObjects(['cargo-hauler', 'eagle-creek-social', 'coastal-resort']),
+  ]}
+>
+  <FramedHero
+    aria="Corporate and promotional video"
+    crumbs={[{ name: 'Services', href: '/services/' }, { name: 'Business video' }]}
+    k="cargo-hauler" label="A-cam · Product"
+    title="Corporate &amp;<br>promotional<br>video" small
+    lede="Brand films, promotional videos, product films and recruitment videos for businesses that want to look as good online as they do in person. Filmed and edited in Milton Keynes, for clients across the UK."
+    cta={{ label: 'Start a project', href: '#enquire' }}
+    cta2={{ label: 'See business work', href: '#work' }}
+  />
+
+  <Subnav title="Business video" links={[['#what', 'What you get'], ['#work', 'Work'], ['#how', 'How it runs'], ['#areas', 'Areas'], ['#faq', 'FAQ'], ['#enquire', 'Enquire']]} />
+
+  <section class="sec gut" aria-labelledby="intro-h">
+    <div class="intro">
+      <h2 class="h2" id="intro-h">Show people what you do. Then make them care.</h2>
+      <p>Starkey Productions is a corporate video production company based in Milton Keynes. We make brand films, promotional videos, product films, recruitment videos and client testimonials for businesses across Buckinghamshire, Bedfordshire, Northamptonshire and the rest of the UK. Everything is shot on cinema cameras and edited for where it will be watched: your website, LinkedIn, social feeds and the emails you send to new clients.</p>
+    </div>
+  </section>
+
+  <section class="sec gut" id="what" aria-labelledby="what-h">
+    <div class="del-head"><h2 class="h2" id="what-h">What you get</h2><p>One film or a full set. Every project comes in the shapes your channels need.</p></div>
+    <ul class="del">
+      <li><span class="del-tags"><span>16:9</span><span>9:16</span></span><h3 class="del-name">Brand film</h3><p class="del-text">Who you are, what you do and why it matters, in two minutes or less. The film that sits on your homepage and does the introducing for you.</p></li>
+      <li><span class="del-tags"><span>16:9</span><span>9:16</span><span>1:1</span></span><h3 class="del-name">Promotional video</h3><p class="del-text">A sharp, short film for a launch, an offer or a campaign, cut in every shape your channels need.</p></li>
+      <li><span class="del-tags"><span>16:9</span><span>1:1</span></span><h3 class="del-name">Product film</h3><p class="del-text">Your product shot properly: detail, movement and use, made for your website, ads and online listings.</p></li>
+      <li><span class="del-tags"><span>16:9</span><span>9:16</span></span><h3 class="del-name">Recruitment video</h3><p class="del-text">Your team and your workplace on camera, so the right people want to apply before they've finished reading the job advert.</p></li>
+      <li><span class="del-tags"><span>16:9</span><span>9:16</span></span><h3 class="del-name">Client testimonials</h3><p class="del-text">Your customers saying it in their own words. Nothing persuades a new client like an existing one.</p></li>
+      <li><span class="del-tags"><span>Aerial</span></span><h3 class="del-name">Drone footage</h3><p class="del-text">Cinema-grade aerial shots of your site, venue or project, graded to match the rest of the film.</p></li>
+    </ul>
+  </section>
+
+  <section class="sec gut" id="work" aria-labelledby="work-h">
+    <div class="work-head"><h2 class="h2" id="work-h">Business work</h2><a class="tlink" href="/work/">All work →</a></div>
+    <div class="ev-grid">
+      <Cam k="cargo-hauler" label="A-cam · Product" tcOff={22675} class="e1" />
+      <Cam k="eagle-creek-social" label="B-cam · Social" tcOff={9020} class="e2" />
+      <Cam k="coastal-resort" label="C-cam · Drone" tcOff={60380} info="5.1K · 25p · 16:9" class="e3" />
+    </div>
+  </section>
+
+  <section class="sec gut" id="how" aria-labelledby="how-h">
+    <h2 class="h2" id="how-h">How it runs</h2>
+    <ol class="proc">
+      <li><span class="p-when">First</span><span class="p-node" aria-hidden="true"></span><h3>Brief</h3><p>What the film is for, who it's for and where it will live. That decides everything else.</p></li>
+      <li><span class="p-when">Before the shoot</span><span class="p-node" aria-hidden="true"></span><h3>Plan</h3><p>Interview questions or script, shot list, locations and schedule, all agreed before anyone picks up a camera.</p></li>
+      <li><span class="p-when">Shoot day</span><span class="p-node rec" aria-hidden="true"></span><h3>Film</h3><p>Cinema cameras, proper lighting and clean audio, with as little disruption to your team as possible.</p></li>
+      <li><span class="p-when">After</span><span class="p-node" aria-hidden="true"></span><h3>Deliver</h3><p>A first cut for your feedback, two rounds of changes, then final files in every format you need.</p></li>
+    </ol>
+  </section>
+
+  <section class="sec gut" aria-label="What business films are for">
+    <h2 class="eyebrow">Made for</h2>
+    <ul class="types">
+      <li>Your website</li><li>LinkedIn</li><li>Product launches</li><li>Recruitment</li><li>Trade shows</li><li>Sales emails</li><li>Investor pitches</li><li>Internal comms</li><li>Paid social</li>
+    </ul>
+  </section>
+
+  <section class="gut" aria-label="Video every month">
+    <div class="band">
+      <div><p class="eyebrow">Need video every month?</p><p class="band-t">Put it on a retainer. <span>One shoot day a month, edited into a steady stream of content for your website and socials, for less than booking the same days one at a time.</span></p></div>
+      <div class="band-r"><p>Best for businesses within about an hour of Milton Keynes.</p><a class="tlink" href="/retainers/">How retainers work →</a></div>
+    </div>
+  </section>
+
+  <Areas />
+  <Faq items={faqs} />
+  <Enquiry heading={'Got <span class="egg egg-zebra">something</span><br>worth filming?'} preset="brand" page="Business video" />
+  <Related exclude="business" letterbox />
+</Base>

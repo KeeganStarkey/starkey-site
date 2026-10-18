@@ -1,0 +1,51 @@
+---
+// A clip in a camera frame: corner marks, cam label, timecode, format.
+// Films open the player when clicked.
+import { videos, poster, sourceAttrs, ratioClass } from '../data/videos';
+
+interface Props {
+  k: string;
+  label: string;
+  tcOff?: number;
+  info?: string;
+  open?: string;
+  caption?: boolean;
+  title?: string;
+  sub?: string;
+  class?: string;
+  play?: boolean;
+  ratio?: '16:9' | '9:16' | '2.39:1' | '1:1';
+  vclass?: string;
+  cat?: string;
+}
+const { k, label, tcOff, info, open, caption = true, title, sub, class: cls, play, ratio, vclass, cat } = Astro.props;
+const v = videos[k];
+if (!v) throw new Error(`Unknown video key: ${k}`);
+const r = ratio || v.ratio;
+const rc = ratioClass(r);
+const isPlay = play ?? !!v.film;
+const t = title || v.title;
+const s = sub || v.sub;
+const bottomLeft = info ?? (r === '9:16' ? '9:16' : r === '2.39:1' ? '4K · 25p · 2.39:1' : '4K · 25p · 16:9');
+const openText = open ?? (isPlay ? (r === '9:16' ? 'Play →' : 'Play film →') : '');
+const tc = '01:00:00:00';
+const src = sourceAttrs(k);
+const playAttrs = isPlay ? {
+  'data-play': '',
+  'data-title': t,
+  'data-sub': s,
+  'data-poster': poster(k),
+  'data-mux': v.mux || undefined,
+  'data-src': v.mux ? undefined : `/media/${v.local}.mp4`,
+} : {};
+const Tag = isPlay ? 'button' : 'div';
+---
+<figure class:list={['cam', cls]} data-cat={cat}>
+  <Tag class:list={['cam-v', rc, vclass]} {...(isPlay ? { type: 'button', 'aria-label': `Play ${t}` } : {})} {...playAttrs}>
+    <video class="footage" muted loop playsinline preload="none" poster={poster(k)} aria-hidden="true" tabindex="-1" {...src}></video>
+    <span class="marks" aria-hidden="true"></span>
+    <span class="hud hud-t" aria-hidden="true"><span><i class="rec-dot"></i>{label}</span>{tcOff !== undefined && <span><span class="stby">Stby</span><span data-tc data-tc-off={tcOff}>{tc}</span></span>}</span>
+    {(bottomLeft || openText) && <span class="hud hud-b" aria-hidden="true"><span>{bottomLeft}</span>{openText && <span class="hud-open">{openText}</span>}</span>}
+  </Tag>
+  {caption && <figcaption><span class="cam-title">{t}</span><span class="cam-sub">{s}</span></figcaption>}
+</figure>

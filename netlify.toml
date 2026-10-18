@@ -1,0 +1,54 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# ── Old Wix addresses → new pages (301 keeps any search ranking they had) ──
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/weddings"
+  to = "/"
+  status = 301
+  # TODO(keegan): point this at the Wedding Diaries website once we have its address.
+
+[[redirects]]
+  from = "/services/events"
+  to = "/services/event-videography/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/#enquire"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio"
+  to = "/work/"
+  status = 301
+
+# ── Security and caching ──
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://image.mux.com; media-src 'self' blob: https://*.mux.com; connect-src 'self' https://*.mux.com; worker-src 'self' blob:; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

@@ -1,0 +1,7 @@
+---
+// Full-bleed background loop (no frame).
+import { poster, sourceAttrs } from '../data/videos';
+interface Props { k: string; class?: string }
+const { k, class: cls } = Astro.props;
+---
+<video class:list={['footage', cls]} muted loop playsinline preload="none" poster={poster(k)} aria-hidden="true" tabindex="-1" {...sourceAttrs(k)}></video>

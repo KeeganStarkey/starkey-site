@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import '../styles/inner.css';
+const updated = '18 October 2026';
+---
+<Base
+  title="Privacy Policy | Starkey Productions"
+  description="How Starkey Productions collects, uses and protects the personal information you share through this website."
+  enquireHref="/#enquire"
+  mbar=""
+>
+  <section class="ph-head gut" aria-labelledby="pp-h">
+    <h1 id="pp-h">Privacy</h1>
+    <p class="lede">How we handle the details you share with us. Last updated {updated}.</p>
+  </section>
+  <article class="prose gut">
+    <h2>Who we are</h2>
+    <p>This website is run by {site.owner}, trading as {site.name}, based in {site.town}, United Kingdom. For anything to do with your personal information, email <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
+    <h2>What we collect</h2>
+    <p>When you send an enquiry through the form on this site, we collect what you type in: your name, your email address or phone number, the type of project, and anything else you choose to tell us (such as an event date or venue). If you message us on WhatsApp or by email instead, we receive whatever you send there.</p>
+    <p>This site does not use advertising or analytics cookies, and we don't track you across other websites.</p>
+
+    <h2>How we use it</h2>
+    <p>We use your details only to reply to your enquiry, discuss and quote for your project, and, if you become a client, to deliver the work and send invoices. We never sell your information or add you to a mailing list without asking.</p>
+    <p>Our lawful basis is taking steps at your request before entering into a contract, and our legitimate interest in responding to people who contact us.</p>
+
+    <h2>Who else handles it</h2>
+    <ul>
+      <li><strong>Netlify</strong> hosts this website and receives form submissions on our behalf. Netlify is based in the United States and transfers data under recognised safeguards for UK data.</li>
+      <li><strong>Mux</strong> streams the videos on this site. Like any video service, it receives your IP address and basic device information so it can deliver the video.</li>
+      <li><strong>Google</strong> provides our email. Messages you send us are stored in our Google account.</li>
+      <li><strong>WhatsApp</strong> (Meta) handles any messages you choose to send us there.</li>
+    </ul>
+    <p>Fonts are served from this website directly, not from a third party.</p>
+
+    <h2>How long we keep it</h2>
+    <p>Enquiries that don't go ahead are deleted within 12 months. If you become a client, we keep project and invoice records for as long as UK tax law requires, which is currently six years.</p>
+
+    <h2>Your rights</h2>
+    <p>You can ask to see the personal information we hold about you, ask us to correct it or delete it, or object to how we use it. Just email us and we'll respond within one month. If you're unhappy with how we've handled your information, you can complain to the Information Commissioner's Office at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk</a>.</p>
+  </article>
+</Base>

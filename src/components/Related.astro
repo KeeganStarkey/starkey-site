@@ -1,0 +1,18 @@
+---
+interface Props { exclude: string; letterbox?: boolean }
+const { exclude, letterbox = false } = Astro.props;
+const all = [
+  { key: 'business', name: 'Business', note: 'Promos · brand films · recruitment', href: '/services/business-video/' },
+  { key: 'events', name: 'Events', note: 'Conferences · launches · awards', href: '/services/event-videography/' },
+  { key: 'social', name: 'Social', note: 'Monthly content retainers', href: '/retainers/' },
+  { key: 'documentary', name: 'Documentary', note: 'Brand stories · mini-docs', href: '/services/brand-documentary/' },
+].filter((r) => r.key !== exclude);
+---
+<section class="rel gut" aria-label="Other services">
+  <p class="eyebrow">Also from the same crew</p>
+  <ul class="rows">
+    {all.map((r) => (
+      <li><a class="row" href={r.href}><span class="row-name">{letterbox && r.key === 'documentary' ? <span class="egg egg-letterbox">{r.name}</span> : r.name}</span><span class="row-note">{r.note} →</span></a></li>
+    ))}
+  </ul>
+</section>

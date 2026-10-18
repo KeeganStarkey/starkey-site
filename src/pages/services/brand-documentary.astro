@@ -1,0 +1,101 @@
+---
+import Base from '../../layouts/Base.astro';
+import FramedHero from '../../components/FramedHero.astro';
+import Subnav from '../../components/Subnav.astro';
+import Cam from '../../components/Cam.astro';
+import Areas from '../../components/Areas.astro';
+import Faq from '../../components/Faq.astro';
+import Enquiry from '../../components/Enquiry.astro';
+import Related from '../../components/Related.astro';
+import { breadcrumb, faq, service, videoObjects } from '../../lib/schema';
+import '../../styles/inner.css';
+
+const faqs = [
+  { q: 'What is a brand documentary?', a: "A short documentary-style film about your business, built around real people and real moments rather than a script or a sales pitch. It's designed to build trust and give people a reason to care, not to list your services." },
+  { q: 'How long should a brand documentary be?', a: "Most full films run between three and eight minutes, with 30 to 90 second cuts for social. We'll recommend a length based on the story and where it's going to be watched." },
+  { q: 'How much does a mini-documentary cost?', a: "It depends on how many filming days the story needs, how many people we interview and how many versions you want. Tell us about the story and we'll send a tailored quote." },
+  { q: "Our team isn't used to being on camera. Is that a problem?", a: "Not at all. We keep the crew small, the interviews feel like conversations, and nobody has to learn lines. Most people forget the camera's there within ten minutes." },
+  { q: 'How long does it take to make?', a: "Usually four to six weeks from the first conversation to the final film, depending on how many filming days the story needs. We'll agree a schedule before we start." },
+  { q: 'Where should we use it?', a: 'Your homepage and about page, YouTube, LinkedIn, pitch decks and sales emails, with short cuts for Instagram and TikTok. A good documentary keeps working for years.' },
+];
+---
+<Base
+  title="Brand Documentaries & Mini-Docs | Starkey Productions"
+  description="Brand documentaries and mini-docs about the people and stories behind your business, from a Milton Keynes video production company."
+  current="services"
+  cta="Tell us the story"
+  schema={[
+    service({ name: 'Brand documentaries', serviceType: 'Documentary video production', path: '/services/brand-documentary/', description: 'Mini-documentaries, founder films and customer stories built around real interviews and real moments.', offers: ['Mini-documentaries', 'Founder films', 'Customer stories', 'Documentary series'] }),
+    breadcrumb([{ name: 'Services', path: '/services/' }, { name: 'Brand documentaries', path: '/services/brand-documentary/' }]),
+    faq(faqs),
+    ...videoObjects(['longest-round', 'eagle-creek-social', 'on-the-water']),
+  ]}
+>
+  <FramedHero
+    aria="Brand documentaries"
+    crumbs={[{ name: 'Services', href: '/services/' }, { name: 'Brand documentaries' }]}
+    k="longest-round" label="A-cam · Interview"
+    title="Brand<br>documentaries"
+    lede="Mini-documentaries about the people, places and stories behind your business. Filmed and edited by Starkey Productions in Milton Keynes, for brands across the UK."
+    cta={{ label: 'Tell us the story', href: '#enquire' }}
+    cta2={{ label: 'See documentary work', href: '#work' }}
+  />
+
+  <Subnav title="Brand documentaries" links={[['#what', 'What you get'], ['#work', 'Work'], ['#how', 'How it runs'], ['#areas', 'Areas'], ['#faq', 'FAQ'], ['#enquire', 'Enquire']]} />
+
+  <section class="sec gut" aria-labelledby="intro-h">
+    <div class="intro">
+      <h2 class="h2" id="intro-h">People don't share adverts. They share stories.</h2>
+      <p>Starkey Productions makes brand documentaries and mini-docs for businesses with a story worth telling: how it started, who makes it happen, and why it matters. We film it the way a <span class="egg egg-letterbox">documentary</span> would, with real interviews and real moments rather than a script read off a card, then shape it into a film people want to watch to the end. It builds trust in a way a promo can't, on your website, YouTube and social channels.</p>
+    </div>
+  </section>
+
+  <section class="sec gut" id="what" aria-labelledby="what-h">
+    <div class="del-head"><h2 class="h2" id="what-h">What you get</h2><p>One story, told properly, and cut for everywhere it needs to go.</p></div>
+    <ul class="del">
+      <li><span class="del-tags"><span>16:9</span></span><h3 class="del-name">Mini-documentary</h3><p class="del-text">A three to eight minute film built around real interviews and real moments. The centrepiece for your website and YouTube.</p></li>
+      <li><span class="del-tags"><span>16:9</span><span>9:16</span></span><h3 class="del-name">Founder film</h3><p class="del-text">The person behind the business, telling the story in their own words. Often the most-watched film a company has.</p></li>
+      <li><span class="del-tags"><span>16:9</span><span>9:16</span></span><h3 class="del-name">Customer stories</h3><p class="del-text">One customer, one problem, one outcome, told properly. Case studies people will actually watch.</p></li>
+      <li><span class="del-tags"><span>16:9</span></span><h3 class="del-name">Episodes &amp; series</h3><p class="del-text">A short series that follows a project, a season or a team over time, released in parts to keep people coming back.</p></li>
+      <li><span class="del-tags"><span>9:16</span><span>1:1</span></span><h3 class="del-name">Social cut-downs</h3><p class="del-text">Short vertical edits from every documentary, so the story reaches people on social as well as on your website.</p></li>
+    </ul>
+  </section>
+
+  <section class="sec gut" id="work" aria-labelledby="work-h">
+    <div class="work-head"><h2 class="h2" id="work-h">Documentary work</h2><a class="tlink" href="/work/">All work →</a></div>
+    <div class="ev-grid">
+      <Cam k="longest-round" label="A-cam · Documentary" tcOff={41210} class="e1" />
+      <Cam k="eagle-creek-social" label="B-cam" tcOff={9020} class="e2" />
+      <Cam k="on-the-water" label="A-cam · Travel" tcOff={72905} info="6K · 24p · 2.39:1" class="e3" />
+    </div>
+  </section>
+
+  <section class="sec gut" id="how" aria-labelledby="how-h">
+    <h2 class="h2" id="how-h">How it runs</h2>
+    <ol class="proc">
+      <li><span class="p-when">First</span><span class="p-node" aria-hidden="true"></span><h3>Find it</h3><p>Conversations with you and your team to find the story worth telling, and the people who should tell it.</p></li>
+      <li><span class="p-when">Before filming</span><span class="p-node" aria-hidden="true"></span><h3>Plan</h3><p>Interview questions, locations and the moments we need to capture, planned so the day feels natural, not staged.</p></li>
+      <li><span class="p-when">On location</span><span class="p-node rec" aria-hidden="true"></span><h3>Film</h3><p>Lit, two-camera interviews and observational filming, with a small crew so people relax and forget we're there.</p></li>
+      <li><span class="p-when">After</span><span class="p-node" aria-hidden="true"></span><h3>Shape</h3><p>The edit is where documentaries are made. You see a first cut, give feedback, and get two rounds of changes.</p></li>
+    </ol>
+  </section>
+
+  <section class="sec gut" aria-label="Stories we tell">
+    <h2 class="eyebrow">Stories we tell</h2>
+    <ul class="types">
+      <li>Founder stories</li><li>Family businesses</li><li>Craft &amp; making</li><li>Charities</li><li>Customer stories</li><li>Behind the scenes</li><li>Projects &amp; builds</li><li>Sport &amp; performance</li><li>Milestones</li>
+    </ul>
+  </section>
+
+  <section class="gut" aria-label="Not sure it's a film">
+    <div class="band">
+      <div><p class="eyebrow">Got a story, not sure it's a film?</p><p class="band-t">Tell us about it. <span>We'll tell you straight whether it has legs, and what kind of film it should be.</span></p></div>
+      <div class="band-r"><p>A two-minute message is enough to start.</p><a class="tlink" href="#enquire">Tell us the story →</a></div>
+    </div>
+  </section>
+
+  <Areas />
+  <Faq items={faqs} />
+  <Enquiry heading="Tell us<br>the story" preset="documentary" page="Brand documentaries" />
+  <Related exclude="documentary" />
+</Base>
