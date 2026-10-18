@@ -104,8 +104,9 @@
 
 /* 6 · Proof */
 .proof{border-top:1px solid var(--line)}
-.logos{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:24px 40px; padding-block:clamp(56px,7vw,90px)}
-.logos ul{display:flex; flex-wrap:wrap; align-items:center; gap:18px clamp(28px,5vw,72px)}
+.logos{display:grid; gap:28px; padding-block:clamp(56px,7vw,90px)}
+.logos ul{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:18px clamp(24px,3vw,48px)}
+@media (max-width:760px){ .logos ul{justify-content:flex-start} }
 .logos li{font-family:var(--display); font-stretch:75%; font-weight:700; font-size:clamp(17px,1.5vw,22px); letter-spacing:.06em; text-transform:uppercase; color:var(--fg-2); transition:color .25s}
 .logos li:hover{color:var(--fg)}
 .logos li img{display:block; height:28px; width:auto; opacity:.75; filter:grayscale(1) brightness(1.6)}

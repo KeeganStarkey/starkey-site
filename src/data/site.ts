@@ -7,7 +7,6 @@ export const site = {
   town: 'Milton Keynes',
   region: 'Buckinghamshire',
   country: 'GB',
-  // TODO(keegan): confirm. Taken from the current Wix site.
   email: 'kstarkeyproductions@gmail.com',
   // International format without + or spaces, for wa.me links.
   whatsapp: '447816516875',
@@ -30,7 +29,15 @@ export const socials: { name: string; url: string }[] = [
 ];
 
 // "Trusted by" row. Names only until logo files arrive (set `logo` to a file in /public/logos).
-export const clients: { name: string; logo?: string }[] = [];
+export const clients: { name: string; logo?: string }[] = [
+  { name: 'Sky Sports News' },
+  { name: 'DAZN' },
+  { name: 'Just Eat' },
+  { name: 'Pressbox PR' },
+  { name: 'Gravity Co' },
+  { name: 'Spinks Creative' },
+  { name: 'Pretty Sailing' },
+];
 
 // Homepage quote. Leave `text` empty to hide the section.
 export const testimonial = {
