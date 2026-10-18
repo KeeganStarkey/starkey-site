@@ -27,47 +27,55 @@ export interface Video {
 
 export const videos: Record<string, Video> = {
   showreel: {
-    title: 'Showreel 2026', sub: 'Business · Events · Social · Documentary', cat: 'business', ratio: '16:9',
-    local: 'hero-land', localPortrait: 'hero-port', duration: '2:14',
+    title: 'Starkey Productions', sub: 'Business · Events · Social · Documentary', cat: 'business', ratio: '16:9',
+    mux: 'vExMuR0102ZieQrbHTLI9571J5aHhgMzbkgisZSiie6bc',
     description: 'Starkey Productions showreel: business films, event coverage, social content and documentaries.',
   },
+  'business-main': {
+    title: 'Losberger De Boer', sub: 'Brand film · Wrapped Up 26', cat: 'business', ratio: '16:9',
+    mux: '4LQMEYECtb02KvSOTd1rLNBbEnDzac801QvMaWafluS01M', film: true,
+    description: 'Brand film for Losberger De Boer: Wrapped Up 26.',
+  },
+  'mgm-grand': {
+    title: 'ELAN Artist x MGM Grand', sub: 'Event film · The Grand', cat: 'events', ratio: '16:9',
+    mux: 'QflHc1tEH01YCnz9AATWmP007MSpsLdlY27GacO01101zvE', film: true,
+    description: 'Event film for ELAN Artist at MGM Grand: The Grand.',
+  },
+  'sidemen-charity': {
+    title: 'Sidemen x Julia Charles', sub: 'Event film · Charity match', cat: 'events', ratio: '16:9',
+    mux: 'RPPzOtlg5OUz2v5N6lu95Wb5lacexZABQswrnFNzfIA', film: true,
+    description: 'Event film of the Sidemen x Julia Charles charity football match.',
+  },
   'longest-round': {
-    title: 'The Longest Round', sub: 'Documentary teaser · DAZN', cat: 'documentary', ratio: '16:9',
-    local: 'doc-longest', film: true, description: 'Documentary teaser for The Longest Round, filmed for DAZN.',
+    title: 'The Longest Round', sub: 'Documentary trailer · DAZN', cat: 'documentary', ratio: '16:9',
+    mux: 'PXxbXXPqU2Sm7eXQvErwhrImBv1iJ02ETO5Cuf00FtSDw', film: true,
+    description: 'Documentary trailer for The Longest Round, filmed for DAZN.',
   },
   'eagle-creek-social': {
-    title: 'Eagle Creek · Lisbon', sub: 'Social cut · Instagram', cat: 'social', ratio: '9:16',
-    local: 'eagle-portrait', film: true, description: 'Vertical social cut filmed in Lisbon for Eagle Creek.',
+    title: 'Eagle Creek · Lisbon', sub: 'Social edit · Instagram', cat: 'social', ratio: '9:16',
+    mux: 'jgnFZNUQ6zSebd1jlBR1tZ9zEOEnhOaFXrgTjpb78mc', film: true,
+    description: 'Vertical social edit filmed in Lisbon for Eagle Creek.',
   },
-  'cargo-hauler': {
-    title: 'Cargo Hauler XT', sub: 'Product film · Eagle Creek', cat: 'business', ratio: '16:9',
-    local: 'cargo-hauler', film: true, description: 'Product film for the Eagle Creek Cargo Hauler XT.',
+  'eagle-creek-cargo': {
+    title: 'Eagle Creek · Cargo Hauler', sub: 'Product film · Social', cat: 'business', ratio: '9:16',
+    mux: 'mHHfGFWOtDj00FOXXoQvFwPmg8FVrxhH7ZSyZF6OyYGw', film: true,
+    description: 'Vertical product film for the Eagle Creek Cargo Hauler.',
   },
-  'coastal-resort': {
-    title: 'Coastal resort', sub: 'Travel · drone film', cat: 'travel', ratio: '16:9',
-    local: 'coast-resort', film: true, description: 'Drone film for a coastal resort.',
+  'festival-a': {
+    title: 'UK festival', sub: 'Social clip · Event', cat: 'events', ratio: '9:16',
+    mux: 'i2JuUZf8W1dezkz2ig8BL6pKD58keObthrB500x01E5GA', film: true,
+    description: 'Vertical social clip filmed at a UK festival.',
   },
-  'festival-dj': {
-    title: 'Festival DJ set', sub: 'Event · social cuts', cat: 'events', ratio: '9:16',
-    local: 'festival-dj', film: true, description: 'Vertical event cut from a festival DJ set.',
+  'festival-b': {
+    title: 'UK festival', sub: 'Social clip · Event', cat: 'events', ratio: '9:16',
+    mux: 'r9xAiyIqBXHzhj84MEgSpuiG7sTyVRBcUTBaWQ5W7WM',
+    description: 'Vertical social clip filmed at a UK festival.',
   },
-  'on-the-water': {
-    title: 'On the water', sub: 'Travel · hospitality', cat: 'travel', ratio: '2.39:1',
-    local: 'boat-crew', film: true, description: 'Hospitality film on the water.',
+  'just-eat-longest-round': {
+    title: 'Just Eat x The Longest Round', sub: 'Social cut · Documentary', cat: 'social', ratio: '9:16',
+    mux: '2NzL2q00Rk7XpAkNvU8653oZ02Gz00clJXXo5mGK49dqps', film: true,
+    description: 'Vertical social cut from The Longest Round, in partnership with Just Eat.',
   },
-  'morocco-aftermovie': {
-    title: 'Morocco aftermovie', sub: 'Aftermovie · social cuts', cat: 'events', ratio: '16:9',
-    local: 'morocco-wide', film: true, description: 'Event aftermovie filmed in Morocco.',
-  },
-  'morocco-vertical': { title: 'Morocco', sub: 'Vertical cut', cat: 'events', ratio: '9:16', local: 'morocco-a' },
-  'morocco-vertical-2': { title: 'Morocco', sub: 'Vertical cut', cat: 'events', ratio: '9:16', local: 'morocco-b' },
-  'events-reel': { title: 'Events reel', sub: 'Events · launches · sport', cat: 'events', ratio: '16:9', local: 'hc-wide', duration: '0:48' },
-  'events-reel-scope': { title: 'Events reel', sub: 'Events · launches · sport', cat: 'events', ratio: '2.39:1', local: 'hc-239' },
-  'highlights-reel': { title: 'Highlights reel', sub: 'Events · launches · sport', cat: 'events', ratio: '16:9', local: 'reel-wide' },
-  'reel-a': { title: 'Reel', sub: 'Social', cat: 'social', ratio: '9:16', local: 'reel-a' },
-  'reel-b': { title: 'Reel', sub: 'Social', cat: 'social', ratio: '9:16', local: 'reel-b' },
-  'bts': { title: 'Behind the scenes', sub: 'Social', cat: 'social', ratio: '9:16', local: 'herqs' },
-  'resort-aerial': { title: 'Resort aerial', sub: 'Website loop', cat: 'travel', ratio: '16:9', local: 'resort-aerial' },
   'beach': { title: 'Beach', sub: 'Loop', cat: 'travel', ratio: '16:9', local: 'beach' },
 };
 

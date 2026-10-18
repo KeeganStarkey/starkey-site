@@ -28,13 +28,13 @@ const faqs = [
     service({ name: 'Corporate and promotional video', serviceType: 'Corporate video production', path: '/services/business-video/', description: 'Brand films, promotional videos, product films, recruitment videos and client testimonials for businesses.', offers: ['Brand films', 'Promotional videos', 'Product films', 'Recruitment videos', 'Client testimonials', 'Drone footage'] }),
     breadcrumb([{ name: 'Services', path: '/services/' }, { name: 'Corporate & promotional video', path: '/services/business-video/' }]),
     faq(faqs),
-    ...videoObjects(['cargo-hauler', 'eagle-creek-social', 'coastal-resort']),
+    ...videoObjects(['business-main', 'eagle-creek-cargo']),
   ]}
 >
   <FramedHero
     aria="Corporate and promotional video"
     crumbs={[{ name: 'Services', href: '/services/' }, { name: 'Business video' }]}
-    k="cargo-hauler" label="A-cam · Product"
+    k="business-main" label="A-cam · Business"
     title="Corporate &amp;<br>promotional<br>video" small
     lede="Brand films, promotional videos, product films and recruitment videos for businesses that want to look as good online as they do in person. Filmed and edited in Milton Keynes, for clients across the UK."
     cta={{ label: 'Start a project', href: '#enquire' }}
@@ -65,9 +65,8 @@ const faqs = [
   <section class="sec gut" id="work" aria-labelledby="work-h">
     <div class="work-head"><h2 class="h2" id="work-h">Business work</h2><a class="tlink" href="/work/">All work →</a></div>
     <div class="ev-grid">
-      <Cam k="cargo-hauler" label="A-cam · Product" tcOff={22675} class="e1" />
-      <Cam k="eagle-creek-social" label="B-cam · Social" tcOff={9020} class="e2" />
-      <Cam k="coastal-resort" label="C-cam · Drone" tcOff={60380} info="5.1K · 25p · 16:9" class="e3" />
+      <Cam k="business-main" label="A-cam · Business" tcOff={22675} class="e1" />
+      <Cam k="eagle-creek-cargo" label="B-cam · Product" tcOff={9020} class="e2" />
     </div>
   </section>
 

@@ -11,29 +11,27 @@ import '../styles/home.css';
 const reel = videos.showreel;
 const work = [
   { k: 'longest-round', cls: 'w1', label: 'A-cam · Documentary', tc: 41210 },
-  { k: 'eagle-creek-social', cls: 'w2', label: 'B-cam', tc: 9020 },
-  { k: 'cargo-hauler', cls: 'w3', label: 'A-cam · Business', tc: 22675 },
-  { k: 'coastal-resort', cls: 'w4', label: 'C-cam · Drone', tc: 60380, info: '5.1K · 25p · 16:9' },
-  { k: 'festival-dj', cls: 'w5', label: 'B-cam', tc: 31640 },
-  { k: 'on-the-water', cls: 'w6', label: 'A-cam · Travel', tc: 72905, info: '6K · 24p · 2.39:1' },
+  { k: 'eagle-creek-social', cls: 'w2', label: 'B-cam · Social', tc: 9020 },
+  { k: 'business-main', cls: 'w3', label: 'A-cam · Business', tc: 22675 },
+  { k: 'mgm-grand', cls: 'w4', label: 'C-cam · Events', tc: 60380 },
+  { k: 'festival-a', cls: 'w5', label: 'B-cam · Events', tc: 31640 },
+  { k: 'sidemen-charity', cls: 'w6', label: 'A-cam · Events', tc: 72905 },
 ];
 const cats = [...new Set(work.map((w) => videos[w.k].cat))];
 const catLabel: Record<string, string> = { business: 'Business', events: 'Events', social: 'Social', documentary: 'Documentary', travel: 'Travel' };
 const services = [
-  { name: 'Business', note: 'Promos · brand films · recruitment', href: '/services/business-video/', k: 'cargo-hauler' },
-  { name: 'Events', note: 'Conferences · launches · awards', href: '/services/event-videography/', k: 'events-reel' },
-  { name: 'Social', note: 'Monthly content retainers', href: '/retainers/', k: 'highlights-reel' },
+  { name: 'Business', note: 'Promos · brand films · recruitment', href: '/services/business-video/', k: 'business-main' },
+  { name: 'Events', note: 'Conferences · launches · awards', href: '/services/event-videography/', k: 'sidemen-charity' },
+  { name: 'Social', note: 'Monthly content retainers', href: '/retainers/', k: 'eagle-creek-social' },
   { name: 'Documentary', note: 'Brand stories · mini-docs', href: '/services/brand-documentary/', k: 'longest-round' },
 ];
 const month = [
-  { k: 'bts', label: 'A-cam', title: 'Shoot day', sub: 'Day 1 · on location', tc: 1200 },
-  { k: 'morocco-vertical', label: 'Reel 01', title: 'Reel 01', sub: 'Week 1 · Instagram' },
-  { k: 'reel-a', label: 'Reel 02', title: 'Reel 02', sub: 'Week 1 · TikTok' },
-  { k: 'reel-b', label: 'BTS', title: 'Behind the scenes', sub: 'Week 2 · Stories' },
-  { k: 'resort-aerial', label: 'Web loop', title: 'Website loop', sub: 'Week 2 · Homepage', wide: true },
-  { k: 'morocco-vertical-2', label: 'Reel 03', title: 'Reel 03', sub: 'Week 3 · LinkedIn' },
-  { k: 'eagle-creek-social', label: 'Reel 04', title: 'Reel 04', sub: 'Week 3 · Instagram' },
-  { k: 'festival-dj', label: 'Recap', title: 'Monthly recap', sub: 'Week 4 · all channels' },
+  { k: 'eagle-creek-social', label: 'A-cam', title: 'Reel 01', sub: 'Week 1 · Instagram' },
+  { k: 'festival-a', label: 'B-cam', title: 'Reel 02', sub: 'Week 1 · TikTok' },
+  { k: 'mgm-grand', label: 'Web loop', title: 'Website loop', sub: 'Week 2 · Homepage', wide: true },
+  { k: 'eagle-creek-cargo', label: 'B-cam', title: 'Reel 03', sub: 'Week 2 · LinkedIn' },
+  { k: 'just-eat-longest-round', label: 'A-cam', title: 'Reel 04', sub: 'Week 3 · Instagram' },
+  { k: 'festival-b', label: 'Recap', title: 'Monthly recap', sub: 'Week 4 · all channels' },
 ];
 const hasProof = clients.length > 0 || !!testimonial.text;
 ---
@@ -86,7 +84,7 @@ const hasProof = clients.length > 0 || !!testimonial.text;
   </section>
 
   <section class="svc" id="services" aria-labelledby="svc-h">
-    <Footage k="cargo-hauler" />
+    <Footage k="business-main" />
     <div class="svc-in gut">
       <div class="svc-head"><h2 class="eyebrow" id="svc-h">What we film</h2><p class="eyebrow hide-sm">Four services, one crew</p></div>
       <ul class="rows" id="rows">
