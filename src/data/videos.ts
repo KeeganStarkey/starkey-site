@@ -76,6 +76,36 @@ export const videos: Record<string, Video> = {
     mux: '2NzL2q00Rk7XpAkNvU8653oZ02Gz00clJXXo5mGK49dqps', film: true,
     description: 'Vertical social cut from The Longest Round, in partnership with Just Eat.',
   },
+  'securitas': {
+    title: 'Securitas Risk Intelligence', sub: 'Corporate film', cat: 'business', ratio: '16:9',
+    mux: 'nClPA00H02WyjimMSHYL7l5iQ3a7dxRvVPHv00gNUi21kk', film: true,
+    description: 'Corporate film for Securitas Risk Intelligence.',
+  },
+  'surf-yoga-morocco': {
+    title: 'Surf Yoga Beer · Morocco', sub: 'Event reel', cat: 'events', ratio: '9:16',
+    mux: 'eaAYIIy7J6AXBkrEhDWt02JOt9lKjiGoUYHq8OwOJXEs', film: true,
+    description: 'Vertical event reel filmed in Morocco for Surf Yoga Beer.',
+  },
+  'banks-boxing': {
+    title: 'Banks Boxing', sub: 'Social reel', cat: 'social', ratio: '9:16',
+    mux: 'UFqkbzkJHfBFuv9zCjrj801akU00MMHzTNb1DaACvR3NM', film: true,
+    description: 'Vertical social reel for Banks Boxing.',
+  },
+  'herqs-1': {
+    title: "Herq's", sub: 'Social clip', cat: 'social', ratio: '9:16',
+    mux: 'wlWslcfAIR8sANvO4GcV01isnHHg401rbSwyU5MOMqP3U', film: true,
+    description: "Vertical social clip for Herq's.",
+  },
+  'herqs-2': {
+    title: "Herq's", sub: 'Social clip', cat: 'social', ratio: '9:16',
+    mux: 'rREXe1LuYs9OtdCOG7o9K3W6C02HSep01N00izNBixgHSs',
+    description: "Vertical social clip for Herq's.",
+  },
+  'gravity-co': {
+    title: 'Gravity Co', sub: 'Social clip', cat: 'social', ratio: '9:16',
+    mux: 'CQjcCwfirFScC45cmDNNcTz1wP7artJnVLlGkZzyF3M', film: true,
+    description: 'Vertical social clip for Gravity Co.',
+  },
   'beach': { title: 'Beach', sub: 'Loop', cat: 'travel', ratio: '16:9', local: 'beach' },
 };
 

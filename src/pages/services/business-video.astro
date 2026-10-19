@@ -28,7 +28,7 @@ const faqs = [
     service({ name: 'Corporate and promotional video', serviceType: 'Corporate video production', path: '/services/business-video/', description: 'Brand films, promotional videos, product films, recruitment videos and client testimonials for businesses.', offers: ['Brand films', 'Promotional videos', 'Product films', 'Recruitment videos', 'Client testimonials', 'Drone footage'] }),
     breadcrumb([{ name: 'Services', path: '/services/' }, { name: 'Corporate & promotional video', path: '/services/business-video/' }]),
     faq(faqs),
-    ...videoObjects(['business-main', 'eagle-creek-cargo']),
+    ...videoObjects(['business-main', 'eagle-creek-cargo', 'securitas']),
   ]}
 >
   <FramedHero
@@ -67,6 +67,7 @@ const faqs = [
     <div class="ev-grid">
       <Cam k="business-main" label="A-cam · Business" tcOff={22675} class="e1" />
       <Cam k="eagle-creek-cargo" label="B-cam · Product" tcOff={9020} class="e2" />
+      <Cam k="securitas" label="C-cam · Corporate" tcOff={60380} class="e3" />
     </div>
   </section>
 
