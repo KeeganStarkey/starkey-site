@@ -107,7 +107,7 @@ export function sourceAttrs(key: string) {
 
 export const films = Object.entries(videos).filter(([, v]) => v.film).map(([key, v]) => ({ key, ...v }));
 
-export const ratioClass = (r: Video['ratio']) => (r === '9:16' ? 'r916' : r === '2.39:1' ? 'r239' : r === '1:1' ? 'r11' : '');
+export const ratioClass = (r: Video['ratio']) => (r === '9:16' ? 'r916' : r === '2.39:1' ? 'r239' : r === '1:1' ? 'r11' : 'r169');
 
 /** Attributes for any element that opens the film player. */
 export function playAttrs(key: string) {

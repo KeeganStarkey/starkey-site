@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Cam from '../components/Cam.astro';
 import Footage from '../components/Footage.astro';
 import Enquiry from '../components/Enquiry.astro';
-import { videos, playAttrs, swapAttrs } from '../data/videos';
+import { videos, swapAttrs } from '../data/videos';
 import { clients, testimonial } from '../data/site';
 import { videoObjects } from '../lib/schema';
 import '../styles/home.css';
@@ -25,14 +25,8 @@ const services = [
   { name: 'Social', note: 'Monthly content retainers', href: '/retainers/', k: 'eagle-creek-social' },
   { name: 'Documentary', note: 'Brand stories · mini-docs', href: '/services/brand-documentary/', k: 'longest-round' },
 ];
-const month = [
-  { k: 'eagle-creek-social', label: 'A-cam', title: 'Reel 01', sub: 'Week 1 · Instagram' },
-  { k: 'festival-a', label: 'B-cam', title: 'Reel 02', sub: 'Week 1 · TikTok' },
-  { k: 'mgm-grand', label: 'Web loop', title: 'Website loop', sub: 'Week 2 · Homepage', wide: true },
-  { k: 'eagle-creek-cargo', label: 'B-cam', title: 'Reel 03', sub: 'Week 2 · LinkedIn' },
-  { k: 'just-eat-longest-round', label: 'A-cam', title: 'Reel 04', sub: 'Week 3 · Instagram' },
-  { k: 'festival-b', label: 'Recap', title: 'Monthly recap', sub: 'Week 4 · all channels' },
-];
+const month = ['eagle-creek-social', 'festival-a', 'mgm-grand', 'eagle-creek-cargo', 'just-eat-longest-round', 'festival-b'];
+const camLabels = ['A-cam', 'B-cam', 'C-cam'];
 const hasProof = clients.length > 0 || !!testimonial.text;
 ---
 <Base
@@ -51,12 +45,11 @@ const hasProof = clients.length > 0 || !!testimonial.text;
         <h1 class="h-title"><span class="h-l1">Made to</span> <span class="h-l2">be watched.</span></h1>
         <div class="h-foot" id="h-foot">
           <p class="h-intro">Video production for businesses, events and brands. Promos, event films, monthly social content and documentaries.</p>
-          <button type="button" class="play" {...playAttrs('showreel')}><span class="play-ic" aria-hidden="true"></span>Play showreel {reel.duration && <span class="dur">{reel.duration}</span>}</button>
+          <a class="tlink" href="#work">See the work →</a>
         </div>
       </div>
       <div class="h-after" id="h-after">
         <div><p class="h-after-t">{reel.title}</p><p class="h-after-s">{reel.sub}</p></div>
-        <button type="button" class="play" tabindex="-1" {...playAttrs('showreel')}><span class="play-ic" aria-hidden="true"></span>Play with sound {reel.duration && <span class="dur">{reel.duration}</span>}</button>
       </div>
     </div>
   </section>
@@ -104,8 +97,8 @@ const hasProof = clients.length > 0 || !!testimonial.text;
         </div>
         <div class="r-view" id="r-view">
           <div class="r-track" id="r-track">
-            {month.map((m) => (
-              <Cam k={m.k} label={m.label} tcOff={m.tc} title={m.title} sub={m.sub} play={false} info="" open="" ratio={m.wide ? '16:9' : '9:16'} vclass={m.wide ? 'r169' : ''} />
+            {month.map((k, i) => (
+              <Cam k={k} label={camLabels[i % 3]} caption={false} play={false} info="" open="" />
             ))}
             <div class="r-end"><p>Then we do it again next month.</p><a class="btn" href="/retainers/">How retainers work</a></div>
           </div>
