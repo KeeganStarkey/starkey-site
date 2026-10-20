@@ -21,8 +21,13 @@ declare global {
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const portrait = innerWidth <= 760 && innerHeight > innerWidth;
-let hlsMod: Promise<any> | null = null;
-const getHls = () => (hlsMod ||= import('hls.js/light').then((m) => m.default));
+// Background loops are muted, so they use the light build. The film player needs the full
+// build: Mux delivers audio as a separate rendition, which hls.js/light can't play.
+let hlsLight: Promise<any> | null = null;
+let hlsFull: Promise<any> | null = null;
+const getHls = (full = false) => full
+  ? (hlsFull ||= import('hls.js').then((m) => m.default))
+  : (hlsLight ||= import('hls.js/light').then((m) => m.default));
 
 export function attach(v: HTMLVideoElement, mux: string | undefined, src: string | undefined, opts: { full?: boolean } = {}) {
   return new Promise<{ destroy(): void } | undefined>((resolve) => {
@@ -32,7 +37,7 @@ export function attach(v: HTMLVideoElement, mux: string | undefined, src: string
       // recommended order. Checking canPlayType() first is unreliable: some Chromium
       // builds report (false) support for application/vnd.apple.mpegurl, which sets
       // a raw .m3u8 as the video src and fails with "no supported sources".
-      getHls().then((Hls) => {
+      getHls(opts.full).then((Hls) => {
         if (Hls.isSupported()) {
           const h = new Hls(opts.full
             ? { capLevelToPlayerSize: true }
